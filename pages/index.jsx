@@ -1,27 +1,24 @@
-import Badge from "../components/Badge";
-import { pink, purple, red } from './data/colors'
+import { colors } from './data/colors'
+import BadgeBar from '../components/BadgeBar'
 
 export default function Home() {
   const shade = 100
+  console.log(colors);
   return (
     <div className="flex flex-col min-h-screen py-2">
-      <div className="flex">
-        {purple.map((shade, day) => {
-          return <Badge style={shade} day={day} />
-        })}
-      </div>
-      <div className="flex">
-        {pink.map((shade, day) => {
-          return <Badge style={shade} day={day} />
-        })}
-      </div>
+      <div className="flex flex-col">
+        {colors.map((color) => {
+          return (
+            <>
+              <h1 className={`${color.header} font-bold text-xl p-2 my-2`}>
+              {color.level === '🥳' ? color.level : `Badge ${color.level}`}</h1>
+              <BadgeBar color={color}/>
+            </>
+          )
+        })
+        }
 
-      <div className="flex">
-        {red.map((shade, day) => {
-          return <Badge style={shade} day={day} />
-        })}
       </div>
-
     </div>
-  );
+  )
 }
