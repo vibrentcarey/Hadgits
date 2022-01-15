@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+  width: 100%;
+  min-width: 100vw;
+}
 body{
   font-family: 'Hahmlet', serif;
   background-color: #444444;
