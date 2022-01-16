@@ -2,5 +2,7 @@
 
 export default function handler(req, res) {
   console.log(req.body);
-  res.status(200).json({ name: 'John Doe' })
+  const badges = []
+  badges.push(req.body)
+  res.status(200).json(badges)
 }
