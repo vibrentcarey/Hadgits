@@ -5,6 +5,12 @@ module.exports = {
   ],
   plugins: [],
   theme: {
+    extend: {
+      colors: {
+        primaryGrey: '#444444',
+        primaryRed: '#DA0037'
+      },
+    },
     screens: {
       'xs': '450px',
       'sm': '640px',

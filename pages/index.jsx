@@ -3,8 +3,6 @@ import BadgeBar from '../components/BadgeBar'
 import PageWrapper from '../components/PageWrapper'
 
 export default function Home() {
-  const shade = 100
-  console.log(colors);
   return (
     <PageWrapper>
       <div className="flex flex-col min-h-screen py-2">
