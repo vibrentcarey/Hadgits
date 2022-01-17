@@ -12,14 +12,16 @@ export default function Form() {
       title: '',
       length: 0,
       reason: '',
-      resource: ''
+      resource: '',
+      resourceLink: ''
     },
     onSubmit: values => {
       const streakInfo = {
         title: values.title,
         length: values.length,
         reason: values.reason,
-        resource: values.resource
+        resource: values.resource,
+        resourceLink: values.resourceLink
       }
       axios.post('/api/badge', streakInfo)
         .then(res => {
@@ -47,11 +49,16 @@ export default function Form() {
         <input className='w-full outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 text-lg' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a reason for this streak' />
       </section>
       <section className='mt-4'>
-        <label className='text-white font-bold text-2xl' htmlFor='resource'>Resource Link</label>
+        <label className='text-white font-bold text-2xl' htmlFor='resource'>Resource Title</label>
         <br />
-        <textarea className='w-full mt-2 h-24 rounded-lg outline-none text-white bg-primaryGrey border-4 border-black px-2 py-1 text-lg' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a link to a useful resource' />
+        <input className='w-full outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 text-lg' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a title for the resource link' />
       </section>
-      <Button>Generate Badge</Button>
+      <section className='mt-4'>
+        <label className='text-white font-bold text-2xl' htmlFor='resourceLink'>Resource Link</label>
+        <br />
+        <textarea className='w-full mt-2 h-24 rounded-lg outline-none text-white bg-primaryGrey border-4 border-black px-2 py-1 text-lg' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a link to a useful resource' />
+      </section>
+      <Button>Start Habit</Button>
     </form>
   )
 }
