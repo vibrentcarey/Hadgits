@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className='h-20 bg-primaryBlack sticky top-0'>
+    <header className='h-20 bg-primaryBlack sticky top-0 z-10'>
       <nav className='flex h-full justify-around items-center'>
         <Link href='/' passHref>
           <FaWallet className='text-white text-4xl' />
