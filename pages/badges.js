@@ -6,7 +6,7 @@ import BadgeBar from '../components/BadgeBar'
 export default function Badges() {
   return (
     <PageWrapper>
-      <div className="flex flex-col min-h-screen py-2">
+      <div className="flex min-h-screen py-2 w-full">
         <div className="flex flex-col items-center">
           {colors.map((color) => {
             return (

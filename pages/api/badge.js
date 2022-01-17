@@ -1,8 +1,43 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+const { connectToDatabase } = require('../../lib/mongodb');
+const ObjectId = require('mongodb').ObjectId;
+// Add Post 
+async function addPost(req, res) {
+  try {
+      // connect to the database
+      let { db } = await connectToDatabase();
+      // add the post
+      await db.collection('posts').insertOne(req.body);
+      // return a message
+      return res.json({
+          message: 'Post added successfully',
+          success: true,
+      });
+  } catch (error) {
+      // return an error
+      return res.json({
+          message: new Error(error).message,
+          success: false,
+      });
+  }
+}
 
-export default function handler(req, res) {
-  console.log(req.body);
-  const badges = []
-  badges.push(req.body)
-  res.status(200).json(badges)
+export default async function handler(req, res) {
+    // switch the methods
+    switch (req.method) {
+        case 'GET': {
+            // return getPosts(req, res);
+        }
+
+        case 'POST': {
+            return addPost(req, res);
+        }
+
+        case 'PUT': {
+            // return updatePost(req, res);
+        }
+
+        case 'DELETE': {
+            // return deletePost(req, res);
+        }
+    }
 }

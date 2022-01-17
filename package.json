@@ -8,6 +8,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "formik": "^2.2.9",
+    "mongodb": "^4.3.0",
     "next": "latest",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",

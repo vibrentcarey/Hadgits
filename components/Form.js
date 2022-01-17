@@ -24,7 +24,7 @@ export default function Form() {
       axios.post('/api/badge', streakInfo)
         .then(res => {
           console.log(res.data)
-          router.replace('/wallet')
+          router.replace('/')
         })
         .catch(err => console.log(err))
     }
