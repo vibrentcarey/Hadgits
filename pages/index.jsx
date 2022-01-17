@@ -25,9 +25,11 @@ export default function Home() {
   return (
     <PageWrapper>
       <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
-      {habits && habits.map(habit => {
-        return <HabitCard title={habit.title} reason={habit.reason} resource={habit.resource} length={habit.length} resourceLink={habit.resourceLink} />
-      })}
+      <div className='flex flex-wrap justify-center'>
+        {habits && habits.map(habit => {
+          return <HabitCard title={habit.title} reason={habit.reason} resource={habit.resource} length={habit.length} resourceLink={habit.resourceLink} />
+        })}
+      </div>
       {loading && <div className='flex justify-center h-60 items-center'>
         <PropagateLoader color='#DA0037' />
       </div>}
