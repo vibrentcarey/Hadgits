@@ -7,3 +7,4 @@ export default function Button({children}) {
     </button>
   )
 }
+// Button.displayName = 'Button'
