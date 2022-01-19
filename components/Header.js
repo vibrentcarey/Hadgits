@@ -3,11 +3,13 @@ import { FaMedal } from 'react-icons/fa';
 import { FaWallet } from 'react-icons/fa';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import Link from 'next/link';
+import { useSession } from 'next-auth/client'
 
 export default function Header() {
+  const [session, loading] = useSession();
   return (
     <header className='h-20 bg-primaryBlack sticky top-0 z-10'>
-      <nav className='flex h-full justify-around items-center'>
+      {session ? <nav className='flex h-full justify-around items-center'>
         <Link href='/' passHref>
           <FaWallet className='text-white text-4xl hover:text-primaryRed cursor-pointer' />
         </Link>
@@ -17,7 +19,7 @@ export default function Header() {
         <Link href='/badges' passHref>
           <FaMedal className='text-white text-4xl hover:text-primaryRed cursor-pointer' />
         </Link>
-      </nav>
-    </header>
+      </nav> : <nav className='flex h-full justify-around items-center'>locked</nav>
+      }    </header>
   )
 }

@@ -5,16 +5,24 @@ import Link from 'next/link';
 import PropagateLoader from "react-spinners/PropagateLoader";
 import PageWrapper from '../components/PageWrapper'
 import HabitCard from '../components/HabitCard'
+import AuthForm from '../components/AuthForm'
+import { FiLogOut } from 'react-icons/fi'
+import { signOut, useSession } from 'next-auth/client';
 
 export default function Home() {
   const [habits, setHabits] = useState([]);
-  const [loading, setLoading] = useState(false)
+  const [waiting, setWaiting] = useState(false)
+  const [session, loading] = useSession();
 
   const loadData = async () => {
-    setLoading(true)
+    setWaiting(true)
     const response = await axios.get('/api/badge')
     setHabits(response.data.message)
-    setLoading(false)
+    setWaiting(false)
+  }
+
+  const handleLogout = () => {
+    signOut()
   }
 
   useEffect(() => {
@@ -24,16 +32,21 @@ export default function Home() {
 
   return (
     <PageWrapper>
-      <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
-      <div className='flex flex-wrap justify-center h-full py-16'>
-        {habits && habits.map(habit => {
-          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} />
-        })}
-      </div>
-      {/* <><h2 className='text-white font-bold text-2xl'>Nothing Here -</h2> <Link  href='/create'><h2 className='text-primaryRed cursor-pointer font-bold text-2xl animate-pulse'> Add A Habit</h2></Link></> */}
-      {loading && <div className='flex justify-center h-60 items-center'>
-        <PropagateLoader color='#DA0037' />
-      </div>}
+      {session ?
+        <>
+          <FiLogOut className='text-white text-xl m-2 float-right hover:text-primaryRed cursor-pointer' onClick={handleLogout} />
+          <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
+          <div className='flex flex-wrap justify-center h-full py-16'>
+            {habits && habits.map(habit => {
+              return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} />
+            })}
+          </div>
+          {/* <><h2 className='text-white font-bold text-2xl'>Nothing Here -</h2> <Link  href='/create'><h2 className='text-primaryRed cursor-pointer font-bold text-2xl animate-pulse'> Add A Habit</h2></Link></> */}
+          {waiting && <div className='flex justify-center h-60 items-center'>
+            <PropagateLoader color='#DA0037' />
+          </div>}
+        </>
+        : <AuthForm />}
 
     </PageWrapper>
   )

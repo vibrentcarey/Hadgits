@@ -20,5 +20,5 @@ export default function AuthForm() {
 
     console.log(result);
   }
-  return <form><input /><input /><button>Submit</button></form>
+  return <form className='mt-8'><input /><input /><button>Submit</button></form>
 }
