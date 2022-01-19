@@ -9,7 +9,7 @@ import { useFormik } from 'formik'
 
 export default function HabitCard({ title, reason, resources, length, refresh }) {
   const [showReasonInput, setShowReasonInput] = useState(false)
-
+console.log(resources)
   const formik = useFormik({
     initialValues: {
       reason: '',
@@ -54,10 +54,13 @@ export default function HabitCard({ title, reason, resources, length, refresh })
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
-      {/* Edit Button */}
-      <FaEdit className='float-right text-white text-2xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
+      
       <h2 className='text-white font-bold text-3xl text-center'>{title}</h2>
+      <div className='flex justify-between mt-4'>
       <h2 className='text-white font-bold text-xl'>Reasons</h2>
+      {/* Edit Button */}
+      <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
+      </div>
       <ul>
         {reason.map(reason => <li className='list-disc text-white m-2'>{reason}</li>)}
       </ul>
@@ -71,7 +74,7 @@ export default function HabitCard({ title, reason, resources, length, refresh })
       <h2 className='text-white font-bold text-xl'>Resources</h2>
       {
         resources.map(resource => {
-          return <a href={resource.resourceLink} target='_blank' className='underline decoration-primaryRed text-white'>{resource.resource}</a>
+          return <a href={resource.resourceLink} target='_blank' className='underline decoration-primaryRed text-white'>{resource.title}</a>
         })
       }
 
