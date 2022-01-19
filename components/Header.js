@@ -9,13 +9,13 @@ export default function Header() {
     <header className='h-20 bg-primaryBlack sticky top-0 z-10'>
       <nav className='flex h-full justify-around items-center'>
         <Link href='/' passHref>
-          <FaWallet className='text-white text-4xl' />
+          <FaWallet className='text-white text-4xl hover:text-primaryRed cursor-pointer' />
         </Link>
         <Link href='/create' passHref>
-          <BsFillPlusSquareFill className='text-white text-4xl' />
+          <BsFillPlusSquareFill className='text-white text-4xl hover:text-primaryRed cursor-pointer' />
         </Link>
         <Link href='/badges' passHref>
-          <FaMedal className='text-white text-4xl' />
+          <FaMedal className='text-white text-4xl hover:text-primaryRed cursor-pointer' />
         </Link>
       </nav>
     </header>

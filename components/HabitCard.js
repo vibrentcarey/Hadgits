@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import Badge from './Badge'
 import { colors } from '../pages/data/colors';
-import { FaEdit } from 'react-icons/fa'
-import { FaTrashAlt } from 'react-icons/fa'
+import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { RiRestartLine } from 'react-icons/ri'
 import axios from 'axios';
 
@@ -15,12 +14,13 @@ export default function HabitCard({ title, reason, resource, length, resourceLin
     }
   })
 
+  // Delete A Card Based On Title
   const handleDelete = (title) => {
-    axios.delete('/api/badge', {data: title})
-    refresh()
+    axios.delete('/api/badge', {data: title});
+    refresh();
   }
   return (
-    <article className=' bg-primaryBlack rounded-xl my-8 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full'>
+    <article className=' bg-primaryBlack rounded-xl my-8 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full max-h-96'>
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)}/>
       {/* Edit Button */}

@@ -1,4 +1,4 @@
-import { getPosts, addPost, deletePost } from '../../utils/database'
+import { getPosts, addPost, deletePost, updatePost } from '../../utils/database'
 
 // Handle All Requests to 'api/badge'
 export default async function handler(req, res) {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         }
 
         case 'PUT': {
-            // return updatePost(req, res);
+            return updatePost(req, res);
         }
 
         case 'DELETE': {
