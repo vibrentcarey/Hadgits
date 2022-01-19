@@ -26,74 +26,80 @@ export async function getPosts(req, res) {
 
 export async function addPost(req, res) {
   try {
-      // connect to the database
-      let { db } = await connectToDatabase();
-      // add the post
-      await db.collection('posts').insertOne(req.body);
-      // return a message
-      return res.json({
-          message: 'Post added successfully',
-          success: true,
-      });
+    // connect to the database
+    let { db } = await connectToDatabase();
+    // add the post
+    await db.collection('posts').insertOne(req.body);
+    // return a message
+    return res.json({
+      message: 'Post added successfully',
+      success: true,
+    });
   } catch (error) {
-      // return an error
-      return res.json({
-          message: new Error(error).message,
-          success: false,
-      });
+    // return an error
+    return res.json({
+      message: new Error(error).message,
+      success: false,
+    });
   }
 }
 
 export async function deletePost(req, res) {
   console.log(req.body);
   try {
-      // Connecting to the database
-      let { db } = await connectToDatabase();
+    // Connecting to the database
+    let { db } = await connectToDatabase();
 
-      // Deleting the post
-      await db.collection('posts').deleteOne({
-          title: req.body
-      });
+    // Deleting the post
+    await db.collection('posts').deleteOne({
+      title: req.body
+    });
 
-      // returning a message
-      return res.json({
-          message: 'Post deleted successfully',
-          success: true,
-      });
+    // returning a message
+    return res.json({
+      message: 'Post deleted successfully',
+      success: true,
+    });
   } catch (error) {
 
-      // returning an error
-      return res.json({
-          message: new Error(error).message,
-          success: false,
-      });
+    // returning an error
+    return res.json({
+      message: new Error(error).message,
+      success: false,
+    });
   }
 }
 
 export async function updatePost(req, res) {
   try {
-      // connect to the database
-      let { db } = await connectToDatabase();
+    // connect to the database
+    let { db } = await connectToDatabase();
 
-      // update the published status of the post
-      await db.collection('posts').updateOne(
-          {
-              title: req.body,
-          },
-          { $set: { published: true } }
-      );
+    console.log(req.body);
+    // update the published status of the post
+    await db.collection('posts').updateOne(
+      { title: req.body.title },
+      { $set: { length: 0 } }
+    );
 
-      // return a message
-      return res.json({
-          message: 'Post updated successfully',
-          success: true,
-      });
+    if(req.body.reason){
+await db.collection('posts').updateOne(
+  {title: req.body.title},
+  {$push: {reason :req.body.reason}}
+)
+    }
+
+    // return a message
+    return res.json({
+      message: 'Post updated successfully',
+      success: true,
+    });
   } catch (error) {
 
-      // return an error
-      return res.json({
-          message: new Error(error).message,
-          success: false,
-      });
+    // return an error
+    return res.json({
+      message: new Error(error).message,
+      success: false,
+    });
   }
 }

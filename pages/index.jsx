@@ -9,7 +9,6 @@ import HabitCard from '../components/HabitCard'
 export default function Home() {
   const [habits, setHabits] = useState([]);
   const [loading, setLoading] = useState(false)
-  console.log(habits)
 
   const loadData = async () => {
     setLoading(true)
@@ -28,8 +27,7 @@ export default function Home() {
       <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center h-full py-16'>
         {habits.length > 0 ? habits.map(habit => {
-          console.log(habit)
-          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resource={habit.resource} length={habit.length} resourceLink={habit.resourceLink} refresh={loadData} />
+          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} />
 
         }) :  <><h2 className='text-white font-bold text-2xl'>Nothing Here -</h2> <Link  href='/create'><h2 className='text-primaryRed cursor-pointer font-bold text-2xl animate-pulse'> Add A Habit</h2></Link></>}
       </div>

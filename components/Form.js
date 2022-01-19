@@ -19,9 +19,8 @@ export default function Form() {
       const streakInfo = {
         title: values.title,
         length: values.length,
-        reason: values.reason,
-        resource: values.resource,
-        resourceLink: values.resourceLink
+        reason: [values.reason],
+        resources: [{title: values.resource , resourceLink: values.resourceLink}]
       }
       axios.post('/api/badge', streakInfo)
         .then(res => {
