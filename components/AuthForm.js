@@ -4,7 +4,9 @@ import {signIn} from 'next-auth/client'
 
 export default function AuthForm() {
   useEffect(() => {
-    // axios.post('/api/auth/signup', { email: 'cows', password: "cows" })
+    // axios.post('/api/auth/signup', { email: 'cowsi', password: "cows" })
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
     login()
 
   }, [])
@@ -12,7 +14,7 @@ export default function AuthForm() {
   async function login() {
     const result = await signIn('credentials', {
       redirect: false,
-      email: 'cows',
+      email: 'cowsi',
       password: 'cows'
     })
 

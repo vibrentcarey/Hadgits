@@ -25,11 +25,11 @@ export default NextAuth({
 
         const isValid = await verifyPassword(credentials.password, user.password)
 
-        console.log(isValid);
-
         if (!isValid) {
           throw new Error('Password does not match')
         }
+
+        return {email: user.email}
       }
     })
   ]
