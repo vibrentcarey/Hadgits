@@ -77,7 +77,7 @@ export async function deletePost(req, res) {
 }
 
 export async function updatePost(req, res) {
-  const { title, user, reason } = req.body;
+  const { title, user, reason, resource } = req.body;
   try {
     // connect to the database
     let { db } = await connectToDatabase();
@@ -93,6 +93,13 @@ export async function updatePost(req, res) {
       await db.collection('posts').updateOne(
         { title, user },
         { $push: { reason } }
+      )
+    }
+
+    if (req.body.reason) {
+      await db.collection('posts').updateOne(
+        { title, user },
+        { $push: { resources: resource.title } }
       )
     }
 
