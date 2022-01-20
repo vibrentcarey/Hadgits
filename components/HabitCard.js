@@ -8,7 +8,9 @@ import { useFormik } from 'formik'
 
 
 export default function HabitCard({ title, reason, resources, length, refresh, user }) {
-  const [showReasonInput, setShowReasonInput] = useState(false)
+  const [showReasonInput, setShowReasonInput] = useState(false);
+  const [showResourcesInput, setShowResourcesInput] = useState(false);
+
   console.log(user);
   console.log(resources)
   const formik = useFormik({
@@ -42,7 +44,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
 
   // Delete A Card
   const handleDelete = (title) => {
-    axios.delete('/api/badge', { data:{title, user }});
+    axios.delete('/api/badge', { data: { title, user } });
     refresh();
   }
   // Restart A Streak
@@ -52,34 +54,47 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <article className=' bg-primaryBlack rounded-xl my-8 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full max-h-96'>
+    <article className=' bg-primaryBlack rounded-xl my-8 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full '>
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
-
+      {/* Card Title */}
       <h2 className='text-white font-bold text-3xl text-center'>{title}</h2>
+      {/* Reasons */}
       <div className='flex justify-between mt-4'>
         <h2 className='text-white font-bold text-xl'>Reasons</h2>
-        {/* Edit Button */}
+        {/* Reasons Edit Button */}
         <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
       </div>
-      <ul>
-        {reason.map(reason => <li className='list-disc text-white m-2'>{reason}</li>)}
+      <ul className='flex justify-around'>
+        {reason.map(reason => <li className='list-disc text-white capitalize'>{reason}</li>)}
       </ul>
+      {/* Reason Input Dropdown */}
       {showReasonInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <label className='text-primaryRed font-bold text-sm' htmlFor='reason'>Reason</label>
+        <label className='text-primaryRed font-bold text-md' htmlFor='reason'>New Reason</label>
         <br />
-        <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a reason for this streak' />
-        <button>+</button>
+        <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' />
       </form>}
-
-      <h2 className='text-white font-bold text-xl'>Resources</h2>
-      {
-        resources.map(resource => {
-          return <a href={resource.resourceLink} target='_blank' className='underline decoration-primaryRed text-white'>{resource.title}</a>
-        })
-      }
-
+      {/* Resources */}
+      <div className='flex justify-between mt-4'>
+        <h2 className='text-white font-bold text-xl'>Resources</h2>
+        {/* Resources Edit Button */}
+        <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowResourcesInput(!showReasonInput)} />
+      </div>
+      <div className='flex justify-around'>
+        {
+          resources.map(resource => {
+            return <a href={resource.resourceLink} target='_blank' className='underline decoration-primaryRed text-white'>{resource.title}</a>
+          })
+        }</div>
+      {showResourcesInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
+        <label className='text-primaryRed font-bold text-md' htmlFor='resource'>New Resource Title</label>
+        <br />
+        <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' />
+        <br/>
+        <label className='text-primaryRed font-bold text-md' htmlFor='resourceLink'>New Resource Link</label>
+        <input className='outline-none w-full text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' />
+      </form>}
 
       <h2 className='text-white font-bold text-xl'>Current Streak</h2>
 
