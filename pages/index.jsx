@@ -43,7 +43,7 @@ export default function Home({ session }) {
       <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center h-full py-16'>
         {habits && habits.map(habit => {
-          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} />
+          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} />
         })}
       </div>
       {/* <><h2 className='text-white font-bold text-2xl'>Nothing Here -</h2> <Link  href='/create'><h2 className='text-primaryRed cursor-pointer font-bold text-2xl animate-pulse'> Add A Habit</h2></Link></> */}

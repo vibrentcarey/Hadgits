@@ -15,15 +15,10 @@ export default function AuthForm() {
     onSubmit: values => {
       if (loginMode) {
         login(values.email, values.password)
-          .then(router.replace('/'))
+          .then(res => console.log(res))
           .catch(err => console.log(err))
       } else {
-        axios.post('/api/auth/signup', { email: values.email, password: values.password })
-          .then(res => {
-            console.log(res)
-            router.replace('/')
-          })
-          .catch(err => console.log(err));
+        signUp(values.email, values.password)
       }
     }
   })
@@ -34,9 +29,16 @@ export default function AuthForm() {
       email,
       password
     })
-
-    console.log(result);
+    router.replace('/');
   }
+
+  async function signUp(email, password) {
+    const response = await axios.post('/api/auth/signup', { email, password })
+    console.log(response)
+    router.replace('/')
+  }
+
+
   return (
     <form className='mt-12' onSubmit={formik.handleSubmit}>
       <input className='my-1' value={formik.values.email} onChange={formik.handleChange} id='email' />

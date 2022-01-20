@@ -1,3 +1,5 @@
+import { resetWarningCache } from 'prop-types';
+
 const { connectToDatabase } = require('../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -48,14 +50,15 @@ export async function addPost(req, res) {
 }
 
 export async function deletePost(req, res) {
-  console.log(req.body);
+  const { title, user } = req.body;
   try {
     // Connecting to the database
     let { db } = await connectToDatabase();
 
     // Deleting the post
     await db.collection('posts').deleteOne({
-      title: req.body
+      user,
+      title
     });
 
     // returning a message
@@ -74,6 +77,7 @@ export async function deletePost(req, res) {
 }
 
 export async function updatePost(req, res) {
+  const { title, user, reason } = req.body;
   try {
     // connect to the database
     let { db } = await connectToDatabase();
@@ -81,14 +85,14 @@ export async function updatePost(req, res) {
     console.log(req.body);
     // update the published status of the post
     await db.collection('posts').updateOne(
-      { title: req.body.title },
+      { title },
       { $set: { length: 0 } }
     );
 
     if (req.body.reason) {
       await db.collection('posts').updateOne(
-        { title: req.body.title },
-        { $push: { reason: req.body.reason } }
+        { title, user },
+        { $push: { reason } }
       )
     }
 

@@ -7,9 +7,10 @@ import axios from 'axios';
 import { useFormik } from 'formik'
 
 
-export default function HabitCard({ title, reason, resources, length, refresh }) {
+export default function HabitCard({ title, reason, resources, length, refresh, user }) {
   const [showReasonInput, setShowReasonInput] = useState(false)
-console.log(resources)
+  console.log(user);
+  console.log(resources)
   const formik = useFormik({
     initialValues: {
       reason: '',
@@ -20,13 +21,14 @@ console.log(resources)
       const updatedInfo = {
         title,
         reason: values.reason,
-        resource: { title: values.resource, resourceLink: values.resourceLink }
+        resource: { title: values.resource, resourceLink: values.resourceLink },
+        user
       }
       axios.put('/api/badge', updatedInfo)
-      .then(() => {
-        setShowReasonInput(false)
-        refresh()
-      })
+        .then(() => {
+          setShowReasonInput(false)
+          refresh()
+        })
     }
   })
 
@@ -40,7 +42,7 @@ console.log(resources)
 
   // Delete A Card
   const handleDelete = (title) => {
-    axios.delete('/api/badge', { data: title });
+    axios.delete('/api/badge', { data:{title, user }});
     refresh();
   }
   // Restart A Streak
@@ -54,12 +56,12 @@ console.log(resources)
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
-      
+
       <h2 className='text-white font-bold text-3xl text-center'>{title}</h2>
       <div className='flex justify-between mt-4'>
-      <h2 className='text-white font-bold text-xl'>Reasons</h2>
-      {/* Edit Button */}
-      <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
+        <h2 className='text-white font-bold text-xl'>Reasons</h2>
+        {/* Edit Button */}
+        <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
       </div>
       <ul>
         {reason.map(reason => <li className='list-disc text-white m-2'>{reason}</li>)}
@@ -69,7 +71,7 @@ console.log(resources)
         <br />
         <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a reason for this streak' />
         <button>+</button>
-        </form>}
+      </form>}
 
       <h2 className='text-white font-bold text-xl'>Resources</h2>
       {
