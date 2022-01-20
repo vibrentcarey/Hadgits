@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaMedal } from 'react-icons/fa';
 import { FaWallet } from 'react-icons/fa';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import Link from 'next/link';
-import { useSession } from 'next-auth/client'
+import { useSession } from 'next-auth/client';
+import AuthContext from '../Context/auth-context'
 
 export default function Header() {
   const [session, loading] = useSession();
+
+  const authContext = useContext(AuthContext);
+  console.log(authContext);
   return (
     <header className='h-20 bg-primaryBlack sticky top-0 z-10'>
       {session ? <nav className='flex h-full justify-around items-center'>

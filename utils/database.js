@@ -2,14 +2,17 @@ const { connectToDatabase } = require('../lib/mongodb');
 const ObjectId = require('mongodb').ObjectId;
 
 export async function getPosts(req, res) {
+  const user = req.query.user && req.query.user
+
   try {
     // connect to the database
     let { db } = await connectToDatabase();
     // fetch the posts
     let posts = await db
       .collection('posts')
-      .find({})
+      .find({ user: user })
       .toArray();
+    console.log(posts);
     // return the posts
     return res.json({
       message: JSON.parse(JSON.stringify(posts)),
@@ -82,11 +85,11 @@ export async function updatePost(req, res) {
       { $set: { length: 0 } }
     );
 
-    if(req.body.reason){
-await db.collection('posts').updateOne(
-  {title: req.body.title},
-  {$push: {reason :req.body.reason}}
-)
+    if (req.body.reason) {
+      await db.collection('posts').updateOne(
+        { title: req.body.title },
+        { $push: { reason: req.body.reason } }
+      )
     }
 
     // return a message

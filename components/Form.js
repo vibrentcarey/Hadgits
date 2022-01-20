@@ -3,8 +3,10 @@ import { useFormik } from 'formik'
 import Button from './Button';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/client';
 
-export default function Form() {
+export default function Form({user}) {
+ 
   const router = useRouter();
   // Form Logic & State
   const formik = useFormik({
@@ -20,7 +22,8 @@ export default function Form() {
         title: values.title,
         length: values.length,
         reason: [values.reason],
-        resources: [{title: values.resource , resourceLink: values.resourceLink}]
+        resources: [{ title: values.resource, resourceLink: values.resourceLink }],
+        user: user.email
       }
       axios.post('/api/badge', streakInfo)
         .then(res => {
