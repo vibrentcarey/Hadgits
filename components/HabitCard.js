@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Badge from './Badge'
 import { colors } from '../pages/data/colors';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
@@ -7,12 +7,56 @@ import axios from 'axios';
 import { useFormik } from 'formik'
 
 
-export default function HabitCard({ title, reason, resources, length, refresh, user }) {
+export default function HabitCard({ title, reason, resources, length, refresh, user, longest }) {
   const [showReasonInput, setShowReasonInput] = useState(false);
   const [showResourcesInput, setShowResourcesInput] = useState(false);
+  const [highestBadge, setHighestBadge] = useState(0)
 
-  console.log(user);
-  console.log(resources)
+  useEffect(() => {
+    console.log(longest);
+
+    switch (true) {
+      case (longest >= 12 && longest < 32):
+        setHighestBadge(12);
+        break;
+      case (longest >= 32 && longest < 57):
+        setHighestBadge(32);
+        break;
+      case longest >= 57 && longest < 87:
+        setHighestBadge(57);
+        break;
+      case longest >= 87 && longest < 122:
+        setHighestBadge(87);
+        break;
+      case longest >= 122 && longest < 162:
+        setHighestBadge(122);
+        break;
+      case longest >= 162 && longest < 206:
+        setHighestBadge(162);
+        break;
+      case longest >= 206 && longest < 256:
+        setHighestBadge(206);
+        break;
+      case longest >= 256 && longest < 311:
+        setHighestBadge(256);
+        break;
+      case longest >= 311 && longest < 360:
+        setHighestBadge(311);
+        break;
+      case longest >= 360 && longest < 365:
+        setHighestBadge(360);
+        break;
+      case longest === 365:
+        setHighestBadge(365);
+        break;
+      default:
+        setHighestBadge(0);
+
+    }
+
+  }, [])
+
+
   const formik = useFormik({
     initialValues: {
       reason: '',
@@ -36,9 +80,10 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
 
   let background = null;
   colors.forEach((color, i) => {
-    const shade = color.shades.find(shade => shade.day === length)
+    const shade = color.shades.find(shade => shade.day === highestBadge)
     if (shade) {
       background = shade.shade;
+      console.log(background);
     }
   })
 
@@ -75,7 +120,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         <br />
         <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' />
       </form>}
-      
+
       {/* Resources */}
       <div className='flex justify-between mt-4'>
         <h2 className='text-white font-bold text-xl'>Resources</h2>
@@ -96,18 +141,17 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         <br />
         <label className='text-primaryRed font-bold text-md' htmlFor='resourceLink'>New Resource Link</label>
         <input className='outline-none w-full text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' />
-        <button className='text-white text-lg'>+</button> 
+        <button className='text-white text-lg'>+</button>
       </form>}
-
+      {/* Current Streak */}
       <h2 className='text-white font-bold text-xl'>Current Streak</h2>
-
       {/* Restart Button*/}
       <RiRestartLine className='float-right text-primaryRed text-3xl mx-2 hover:animate-spin cursor-pointer' onClick={() => handleRestart(title)} />
       <p className='text-green-500 font-bold text-xl'>{length}</p>
-
+      {/* Badge */}
       <h2 className='text-white font-bold text-xl'>Highest Badge Earned</h2>
       <hr className='border-b-2 border-primaryRed mb-4' />
-      <Badge day={length} style={background && background} />
+      <Badge day={highestBadge > 0 && highestBadge} style={background && background} />
     </article>
   )
 }
