@@ -96,10 +96,11 @@ export async function updatePost(req, res) {
       )
     }
 
-    if (req.body.reason) {
+    if (req.body.resource) {
+      console.log('resource' , resource);
       await db.collection('posts').updateOne(
         { title, user },
-        { $push: { resources: resource.title } }
+        { $push: { resources: {title: resource.title, resourceLink: resource.resourceLink }} }
       )
     }
 
