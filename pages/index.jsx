@@ -41,7 +41,7 @@ export default function Home({ session }) {
     <PageWrapper>
       <FiLogOut className='text-white text-xl m-2 float-right hover:text-primaryRed cursor-pointer' onClick={handleLogout} />
       <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
-      <div className='flex flex-wrap justify-center items-start h-full py-16'>
+      <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {
           return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest}/>
         })}

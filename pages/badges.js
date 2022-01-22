@@ -19,7 +19,7 @@ export default function Badges({session}) {
         {colors.map((color) => {
           return (
             <>
-              <h1 className={`${color.header} w-full font-bold text-2xl p-2 mt-8 mb-4 shadow-sm text-center text-white max-w-2xl rounded-md`}>
+              <h1 className={`${color.header} max-w-lg w-full font-bold text-2xl p-2 mt-8 mb-4 shadow-sm text-center text-white max-w-2xl rounded-md border-4 border-black`}>
                 {color.level === '🥳' ? color.level : `Badge ${color.level}`}</h1>
               <BadgeBar color={color} />
             </>

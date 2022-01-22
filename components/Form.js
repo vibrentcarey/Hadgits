@@ -35,26 +35,26 @@ export default function Form({ user }) {
     }
   })
   return (
-    <form className='p-2 mt-10 flex flex-col' onSubmit={formik.handleSubmit}>
+    <form className='p-8 max-w-lg w-full shadow-lg mt-10 flex flex-col border-4 border-black rounded-lg' onSubmit={formik.handleSubmit}>
       <section className='mt-4'>
         <label className='text-white font-bold text-2xl' htmlFor='title'>Title</label>
         <br />
-        <input className='outline-none w-full text-white bg-primaryGrey border-b-4 border-black px-2 py-1 text-lg' value={formik.values.title} onChange={formik.handleChange} id='title' placeholder='Enter the title for this streak' />
+        <input className='input' value={formik.values.title} onChange={formik.handleChange} id='title' placeholder='Enter the title for this streak' />
       </section>
       <section className='mt-4'>
         <label className='text-white font-bold text-2xl' htmlFor='length'>Active Days</label>
         <br />
-        <input type='number' max={365} className=' w-full outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 text-lg' value={formik.values.length} onChange={formik.handleChange} id='length' placeholder='Enter active streak if you have one' />
+        <input type='number' max={365} min={0} className='input' value={formik.values.length} onChange={formik.handleChange} id='length' placeholder='Enter active streak if you have one' />
       </section>
       <section className='mt-4'>
         <label className='text-white font-bold text-2xl' htmlFor='reason'>Reason</label>
         <br />
-        <input className='w-full outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 text-lg' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a reason for this streak' />
+        <input className='input' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a reason for this streak' />
       </section>
       <section className='mt-4'>
         <label className='text-white font-bold text-2xl' htmlFor='resource'>Resource Title</label>
         <br />
-        <input className='w-full outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 text-lg' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a title for the resource link' />
+        <input className='input' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a title for the resource link' />
       </section>
       <section className='mt-4'>
         <label className='text-white font-bold text-2xl' htmlFor='resourceLink'>Resource Link</label>

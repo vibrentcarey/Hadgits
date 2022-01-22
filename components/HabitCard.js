@@ -99,7 +99,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <article className=' bg-primaryBlack rounded-xl my-8 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full '>
+    <article className=' bg-primaryBlack rounded-xl my-2 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full '>
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
@@ -116,9 +116,9 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       </ul>
       {/* Reason Input Dropdown */}
       {showReasonInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <label className='text-primaryRed font-bold text-md' htmlFor='reason'>New Reason</label>
+        <label className='label' htmlFor='reason'>New Reason</label>
         <br />
-        <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' />
+        <input className='input' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' />
       </form>}
 
       {/* Resources */}
@@ -135,12 +135,12 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         }</div>
       {/* Resource Input Dropdown */}
       {showResourcesInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <label className='text-primaryRed font-bold text-md' htmlFor='resource'>New Resource Title</label>
+        <label className='label' htmlFor='resource'>New Resource Title</label>
         <br />
-        <input className='outline-none text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' />
+        <input className='input' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' />
         <br />
-        <label className='text-primaryRed font-bold text-md' htmlFor='resourceLink'>New Resource Link</label>
-        <input className='outline-none w-full text-white bg-primaryGrey border-b-4 border-black px-2 py-1 mb-4 text-sm' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' />
+        <label className='label' htmlFor='resourceLink'>New Resource Link</label>
+        <input className='input' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' />
         <button className='text-white text-lg'>+</button>
       </form>}
       {/* Current Streak */}
