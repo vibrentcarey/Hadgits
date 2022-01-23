@@ -5,16 +5,7 @@ import Form from "../components/Form";
 import PageWrapper from "../components/PageWrapper";
 import {  getSession } from "next-auth/client";
 import { Context } from "vm";
-
-interface Session {
-  session: {
-      user: {
-        name: null;
-        email: string;
-        image: null;
-      };
-  };
-}
+import {Session} from '../types/Session'
 
 export default function Create({ session }: Session) {
   const [email, setEmail] = useState("");

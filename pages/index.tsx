@@ -1,6 +1,6 @@
 
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { ContextType, useEffect, useState } from 'react'
 import Link from 'next/link';
 import PropagateLoader from "react-spinners/PropagateLoader";
 import PageWrapper from '../components/PageWrapper'
@@ -10,12 +10,19 @@ import { FiLogOut } from 'react-icons/fi'
 import { signOut, useSession } from 'next-auth/client';
 import { getSession } from "next-auth/client"
 import { useRouter } from 'next/router';
+import { Session } from '../types/Session'
+import { Context } from 'vm';
+import {UserHabit} from '../types/Habit' 
 
-export default function Home({ session }) {
-  const [habits, setHabits] = useState([]);
+interface Habits {
+  habits: UserHabit[]
+}
+
+export default function Home({ session }: Session) {
+  const [habits, setHabits] = useState<Habits | []>([]);
   const [waiting, setWaiting] = useState(false)
   const router = useRouter()
-  const loadData = async (email) => {
+  const loadData = async (email: string) => {
     console.log(email);
     setWaiting(true)
 
@@ -43,7 +50,7 @@ export default function Home({ session }) {
       <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {
-          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest}/>
+          return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest} />
         })}
       </div>
       {/* <><h2 className='text-white font-bold text-2xl'>Nothing Here -</h2> <Link  href='/create'><h2 className='text-primaryRed cursor-pointer font-bold text-2xl animate-pulse'> Add A Habit</h2></Link></> */}
@@ -53,7 +60,7 @@ export default function Home({ session }) {
     </PageWrapper>
   )
 }
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps(ctx : Context) {
   return {
     props: {
       session: await getSession(ctx)
