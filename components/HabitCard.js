@@ -52,7 +52,6 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         break;
       default:
         setHighestBadge(0);
-
     }
 
   }, [])
@@ -105,7 +104,8 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
       {/* Card Title */}
-      <h2 className='text-white font-bold text-3xl text-center'>{title}</h2>
+      <h2 className='text-white font-bold text-3xl text-center capitalize'>{title}</h2>
+
       {/* Reasons */}
       <div className='flex justify-between mt-4'>
         <h2 className='text-white font-bold text-xl'>Reasons</h2>
@@ -116,7 +116,6 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         {reason.map(reason => <li className='list-none text-white capitalize mx-2'> - {reason}</li>)}
       </ul>
       {/* Reason Input Dropdown */}
-
       {showReasonInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
         <Input label='reason' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' >New Reason</Input>
       </form>}
@@ -140,6 +139,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         <Input label='resource' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' >New Resource Title</Input>
         <button className='text-white text-lg'>+</button>
       </form>}
+
       {/* Current Streak */}
       <h2 className='text-white font-bold text-xl'>Current Streak</h2>
       {/* Restart Button*/}
