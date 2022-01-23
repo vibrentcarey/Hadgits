@@ -3,14 +3,12 @@ import Badge from "./Badge";
 
 type BadgeBarProps = {
   color: {
-    color: {
-      header: string;
-      level: number;
-      shades: {
-        day: number;
-        shade: string;
-      }[];
-    };
+    header: string;
+    level: number;
+    shades: {
+      day: number;
+      shade: string;
+    }[];
   };
 };
 
