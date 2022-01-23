@@ -12,6 +12,7 @@ interface FormProps {
 
 export default function Form({ email }: FormProps) {
   const router = useRouter();
+console.log(email);
 
   const createHabit = async (habitInfo: UserHabit) => {
     try {
