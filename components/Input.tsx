@@ -1,12 +1,15 @@
-import React, { ReactNode } from "react";
+import React, {ReactNode } from "react";
 
 interface InputProps {
   id: string;
   value: string;
   placeholder: string;
-  label: string;
-  onChange: () => void;
+  min?: number;
+  max?: number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   children: ReactNode;
+  white?: boolean;
+  type?: string;
 }
 
 export default function Input({
@@ -15,11 +18,14 @@ export default function Input({
   placeholder,
   onChange,
   children,
-  label,
+  white,
+  type,
+  min,
+  max,
 }: InputProps) {
   return (
     <>
-      <label className="label" htmlFor={label}>
+      <label className={white ? "white" : "label"} htmlFor={id}>
         {children}
       </label>
       <br />
@@ -29,6 +35,9 @@ export default function Input({
         placeholder={placeholder}
         onChange={onChange}
         id={id}
+        type={type}
+        min={min}
+        max={max}
       />
     </>
   );

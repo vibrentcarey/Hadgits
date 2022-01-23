@@ -1,7 +1,7 @@
 import React from "react";
 import Badge from "./Badge";
 
-type BadgeBarProps = {
+interface BadgeBarProps {
   color: {
     header: string;
     level: number;
@@ -10,7 +10,7 @@ type BadgeBarProps = {
       shade: string;
     }[];
   };
-};
+}
 
 export default function BadgeBar(color: BadgeBarProps) {
   return (

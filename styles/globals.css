@@ -26,7 +26,12 @@ body {
   }
 
   .label {
-    color: #DA0037;
+    color: #da0037;
     font-weight: bold;
+  }
+
+  .white {
+    color: white;
+    font-size: 1.6rem;
   }
 }
