@@ -4,6 +4,7 @@ import Button from "./Button";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Input from "./Input";
+import {  UserHabit } from "../types/Habit";
 
 interface FormProps {
   email: string;
@@ -11,6 +12,17 @@ interface FormProps {
 
 export default function Form({ email }: FormProps) {
   const router = useRouter();
+
+  const createHabit = async (habitInfo: UserHabit) => {
+    try {
+      const response = await axios.post("/api/badge", habitInfo);
+      console.log(response);
+      router.replace("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // Form Logic & State
   const formik = useFormik({
     initialValues: {
@@ -23,21 +35,15 @@ export default function Form({ email }: FormProps) {
     onSubmit: (values) => {
       const streakInfo = {
         title: values.title,
-        length: values.length,
+        length: +values.length,
         reason: [values.reason],
         resources: [
           { title: values.resource, resourceLink: values.resourceLink },
         ],
-        longest: values.length,
+        longest: +values.length,
         user: email,
       };
-      axios
-        .post("/api/badge", streakInfo)
-        .then((res) => {
-          console.log(res.data);
-          router.replace("/");
-        })
-        .catch((err) => console.log(err));
+      createHabit(streakInfo);
     },
   });
   return (
