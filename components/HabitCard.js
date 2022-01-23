@@ -5,6 +5,7 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { RiRestartLine, RiAddCircleLine } from 'react-icons/ri'
 import axios from 'axios';
 import { useFormik } from 'formik'
+import Input from './Input.tsx'
 
 
 export default function HabitCard({ title, reason, resources, length, refresh, user, longest }) {
@@ -115,10 +116,9 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         {reason.map(reason => <li className='list-none text-white capitalize mx-2'> - {reason}</li>)}
       </ul>
       {/* Reason Input Dropdown */}
+
       {showReasonInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <label className='label' htmlFor='reason'>New Reason</label>
-        <br />
-        <input className='input' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' />
+        <Input label='reason' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' >New Reason</Input>
       </form>}
 
       {/* Resources */}
@@ -135,12 +135,9 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         }</div>
       {/* Resource Input Dropdown */}
       {showResourcesInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <label className='label' htmlFor='resource'>New Resource Title</label>
+        <Input label='resourceLink' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' >New Resource Link</Input>
         <br />
-        <input className='input' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' />
-        <br />
-        <label className='label' htmlFor='resourceLink'>New Resource Link</label>
-        <input className='input' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' />
+        <Input label='resource' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' >New Resource Title</Input>
         <button className='text-white text-lg'>+</button>
       </form>}
       {/* Current Streak */}
