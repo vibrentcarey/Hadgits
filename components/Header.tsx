@@ -13,7 +13,7 @@ export default function Header() {
   const authContext = useContext(AuthContext);
   console.log(authContext);
   return (
-    <header className='h-20 bg-purple-800 sticky top-0 z-10 flex items-center justify-between px-8'>
+    <header className='h-20 bg-purple-800 sticky top-0 z-30 flex items-center justify-between px-8'>
       <div className='flex items-center'>
         <BiBadgeCheck className='text-white text-xl m-1'/>
       <h1 className='text-white text-2xl font-bold'>Hadgits</h1>

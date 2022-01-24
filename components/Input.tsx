@@ -12,6 +12,7 @@ interface InputProps {
   type?: string;
   num?: boolean
   size?: string
+  error?: string
 }
 
 export default function LocalInput({
@@ -25,7 +26,8 @@ export default function LocalInput({
   min,
   max,
   num,
-  size
+  size,
+  error
 }: InputProps) {
   return (
     <>
@@ -43,9 +45,10 @@ export default function LocalInput({
         min={min}
         max={max}
         color='purple'
-        inputmode={num && 'numeric'}
+        inputMode={num && 'numeric'}
         size={size}
         outline
+        error={error}
       />
     </>
   );

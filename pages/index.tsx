@@ -69,20 +69,20 @@ export default function Home({ session }: Session) {
 
   return (
     <PageWrapper>
-      <div className='float-right flex items-center text-purple-600 text-sm hover:text-purple-700 cursor-pointer' onClick={confirmLogout} >
-        <span>Logout</span>
-        <FiLogOut  />
-      </div>
-     
       <h1 className='underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {
           return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest} />
         })}
+        <div className='flex fixed z-0 inset-x-0 bottom-0 text-purple-600 justify-center items-center py-2  text-sm hover:text-purple-300 cursor-pointer' onClick={confirmLogout} >
+        <span>Logout</span>
+        <FiLogOut  />
+      </div>
       </div>
       <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit}/>
       {waiting && <div className='flex justify-center h-60 items-center'>Loading
       </div>}
+      
     </PageWrapper>
   )
 }

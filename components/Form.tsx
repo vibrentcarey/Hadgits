@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Input from "./Input";
 import {  UserHabit } from "../types/Habit";
 import Card from "@material-tailwind/react/Card";
+import * as Yup from 'yup'
 
 interface FormProps {
   email: string;
@@ -13,7 +14,6 @@ interface FormProps {
 
 export default function Form({ email }: FormProps) {
   const router = useRouter();
-console.log(email);
 
   const createHabit = async (habitInfo: UserHabit) => {
     try {
@@ -34,6 +34,26 @@ console.log(email);
       resource: "",
       resourceLink: "",
     },
+    validationSchema: Yup.object({
+      title: Yup.string()
+      .min(3, "Must have 3 characters")
+      .max(20, "Must be 20 characters or less")
+      .required("Title is required"),
+      length: Yup.string()
+      .max(3, "Streaks cap at 1 year")
+      .required("Length is required"),
+      reason: Yup.string()
+      .min(3, "Must have 3 characters")
+      .max(20, "Must be 20 characters or less")
+      .required("Reason is required"),
+      resourceLink: Yup.string()
+      .min(5, "Must have 5 characters")
+      .required("Link is required"),
+      resource: Yup.string()
+      .min(5, "Must have 5 characters")
+      .required("Resource title is required"),
+      
+    }),
     onSubmit: (values) => {
       const streakInfo = {
         title: values.title,
@@ -46,6 +66,7 @@ console.log(email);
         user: email,
       };
       createHabit(streakInfo);
+      
     },
   });
   return (
@@ -60,6 +81,7 @@ console.log(email);
           onChange={formik.handleChange}
           id="title"
           placeholder="Enter the title for this streak"
+          error={formik.errors.title}
         >
           Title
         </Input>
@@ -72,8 +94,9 @@ console.log(email);
           value={formik.values.length}
           onChange={formik.handleChange}
           id="length"
-          placeholder="Enter active streak if you have one"
+          placeholder="Enter active streak or 0"
           num
+          error={formik.errors.length}
         >
           Active Days
         </Input>
@@ -84,6 +107,7 @@ console.log(email);
           onChange={formik.handleChange}
           id="reason"
           placeholder="Enter a reason for this streak"
+          error={formik.errors.reason}
         >
           Reason
         </Input>
@@ -95,6 +119,7 @@ console.log(email);
           onChange={formik.handleChange}
           id="resourceLink"
           placeholder="Enter a link to a useful resource"
+          error={formik.errors.resourceLink}
         >Resource link
         </Input>
       </section>
@@ -104,6 +129,7 @@ console.log(email);
           onChange={formik.handleChange}
           id="resource"
           placeholder="Enter a title for the resource link"
+          error={formik.errors.resource}
         >
           Resource Title
         </Input>

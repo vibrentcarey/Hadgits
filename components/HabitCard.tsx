@@ -100,7 +100,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <Card className='my-2 mx-2 px-8 py-4 max-w-sm w-full '>
+    <Card className='my-4 mx-2 px-8 py-4 max-w-sm w-full z-10'>
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
@@ -132,10 +132,10 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         {/* Resources Edit Button */}
         <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse cursor-pointer float-right' onClick={() => setShowResourcesInput(!showResourcesInput)} />
 
-      <div className='flex flex-wrap'>
+      <div className='flex flex-wrap justify-evenly'>
         {
           resources.map(resource => {
-            return <a href={resource.resourceLink} target='_blank' className=' font-bold underline decoration-purple-600 text-purple-500'>{resource.title}</a>
+            return <a href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-purple-600 text-purple-500'>{resource.title}</a>
           })
         }</div>
       {/* Resource Input Dropdown */}
