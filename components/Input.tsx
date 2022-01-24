@@ -7,6 +7,7 @@ interface InputProps {
   min?: number;
   max?: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
   children: ReactNode;
   white?: boolean;
   type?: string;
@@ -27,7 +28,8 @@ export default function LocalInput({
   max,
   num,
   size,
-  error
+  error,
+  onBlur,
 }: InputProps) {
   return (
     <>
@@ -49,6 +51,7 @@ export default function LocalInput({
         size={size}
         outline
         error={error}
+        onBlur={onBlur}
       />
     </>
   );

@@ -8,14 +8,20 @@ import { useFormik } from 'formik'
 import Input from './Input.tsx'
 import Card from "@material-tailwind/react/Card";
 import LocalButton from './Button';
+import { signOut,  } from 'next-auth/client';
+import Modal from '../components/Modal'
+import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate";
+
 
 export default function HabitCard({ title, reason, resources, length, refresh, user, longest }) {
   const [showReasonInput, setShowReasonInput] = useState(false);
   const [showResourcesInput, setShowResourcesInput] = useState(false);
   const [highestBadge, setHighestBadge] = useState(0)
-
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalMessage, setModalMessage] = useState('');
+  const [confirm, setConfirm] = useState('')
   useEffect(() => {
-    console.log(longest);
 
     switch (true) {
       case (longest >= 12 && longest < 32):
@@ -99,10 +105,42 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
     .then(() => refresh())
   }
 
+  const confirmDelete = () => {
+    setModalTitle('Delete Habit?')
+    setModalMessage('Please confirm that you want to delete this habit, you cannot undo this action.')
+    setConfirm('Delete')
+    setShowModal(true)
+  }
+  const confirmRestart = () => {
+    setModalTitle('Restart Counter?')
+    setModalMessage('Please confirm that you want to restart this streak, you will still keep any badges earned.')
+    setConfirm('Restart')
+    setShowModal(true)
+  }
+
+  const submit = () => {
+    if(confirm === 'Logout'){
+    signOut()
+    } 
+    if(confirm === 'Delete'){
+      handleDelete(title)
+    }
+    if(confirm === 'Restart'){
+      console.log('restarting');
+      
+      handleRestart(title)
+    }
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   return (
     <Card className='my-4 mx-2 px-8 py-4 max-w-sm w-full z-10'>
+       <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit}/>
       {/* Delete Button */}
-      <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
+      <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={confirmDelete
       } />
       {/* Card Title */}
       <h2 className='text-purple-600 font-bold text-3xl text-center capitalize'>{title}</h2>
@@ -115,14 +153,19 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         {/* Reasons Edit Button */}
         <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse float-right cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
 
-      <ul className='flex flex-wrap'>
+      <ul className='flex flex-wrap justify-evenly'>
         {reason.map(reason => <li className='list-none font-bold text-purple-500 capitalize mx-2'> - {reason}</li>)}
       </ul>
       {/* Reason Input Dropdown */}
-      {showReasonInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
+     
+      {showReasonInput && 
+       <Animate play start={{ opacity: 0 }} end={{ opacity: 1 }}>
+         
+      <form className='mt-4' onSubmit={formik.handleSubmit}>
         <Input size='sm' label='reason' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' >New Reason</Input>
 <LocalButton size='sm' color='purple'>Add Reason</LocalButton>
-      </form>}
+      </form> </Animate>}
+
 
       {/* Resources */}
 
@@ -139,24 +182,27 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
           })
         }</div>
       {/* Resource Input Dropdown */}
-      {showResourcesInput && <form className='mt-2' onSubmit={formik.handleSubmit}>
+      {showResourcesInput && 
+        <Animate play start={{ opacity: 0 }} end={{ opacity: 1 }}>
+      <form className='mt-2' onSubmit={formik.handleSubmit}>
         <Input size='sm' label='resourceLink' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' >New Resource Link</Input>
         <br />
         <Input size='sm' label='resource' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' >New Resource Title</Input>
 <LocalButton size='sm' color='purple'>Add Resource</LocalButton>
-      </form>}
+      </form></Animate>}
 
       {/* Current Streak */}
       <h2 className='text-purple-600 font-bold text-xl mt-5'>Current Streak</h2>
       <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
 
       {/* Restart Button*/}
-      <RiRestartLine className='float-right text-purple-500 text-3xl mx-2 hover:animate-spin cursor-pointer' onClick={() => handleRestart(title)} />
+      <RiRestartLine className='float-right text-purple-500 text-3xl mx-2 hover:animate-spin cursor-pointer' onClick={confirmRestart} />
       <p className='text-purple-500 font-bold text-xl'>{length}</p>
       {/* Badge */}
       <h2 className='text-purple-600 font-bold text-xl mt-5'>Highest Badge Earned</h2>
       <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
       <Badge day={highestBadge > 0 && highestBadge} style={background && background} />
     </Card>
+
   )
 }

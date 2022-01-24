@@ -37,14 +37,14 @@ export default function Form({ email }: FormProps) {
     validationSchema: Yup.object({
       title: Yup.string()
       .min(3, "Must have 3 characters")
-      .max(20, "Must be 20 characters or less")
+      .max(30 , "Must be 20 characters or less")
       .required("Title is required"),
-      length: Yup.string()
-      .max(3, "Streaks cap at 1 year")
+      length: Yup.number()
+      .max(365, "Streaks cap at 1 year")
       .required("Length is required"),
       reason: Yup.string()
       .min(3, "Must have 3 characters")
-      .max(20, "Must be 20 characters or less")
+      .max(30, "Must be 20 characters or less")
       .required("Reason is required"),
       resourceLink: Yup.string()
       .min(5, "Must have 5 characters")
@@ -81,7 +81,8 @@ export default function Form({ email }: FormProps) {
           onChange={formik.handleChange}
           id="title"
           placeholder="Enter the title for this streak"
-          error={formik.errors.title}
+          error={formik.touched.title && formik.errors.title}
+          onBlur={formik.handleBlur}
         >
           Title
         </Input>
@@ -96,7 +97,8 @@ export default function Form({ email }: FormProps) {
           id="length"
           placeholder="Enter active streak or 0"
           num
-          error={formik.errors.length}
+          error={formik.touched.length && formik.errors.length}
+          onBlur={formik.handleBlur}
         >
           Active Days
         </Input>
@@ -107,7 +109,9 @@ export default function Form({ email }: FormProps) {
           onChange={formik.handleChange}
           id="reason"
           placeholder="Enter a reason for this streak"
-          error={formik.errors.reason}
+          error={formik.touched.reason && formik.errors.reason}
+          onBlur={formik.handleBlur}
+
         >
           Reason
         </Input>
@@ -119,7 +123,9 @@ export default function Form({ email }: FormProps) {
           onChange={formik.handleChange}
           id="resourceLink"
           placeholder="Enter a link to a useful resource"
-          error={formik.errors.resourceLink}
+          error={formik.touched.resourceLink && formik.errors.resourceLink}
+          onBlur={formik.handleBlur}
+
         >Resource link
         </Input>
       </section>
@@ -129,7 +135,9 @@ export default function Form({ email }: FormProps) {
           onChange={formik.handleChange}
           id="resource"
           placeholder="Enter a title for the resource link"
-          error={formik.errors.resource}
+          error={formik.touched.resource && formik.errors.resource}
+          onBlur={formik.handleBlur}
+
         >
           Resource Title
         </Input>

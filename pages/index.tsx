@@ -1,11 +1,10 @@
 
 import axios from 'axios'
-import { ContextType, useEffect, useState } from 'react'
+import { ContextType, useCallback, useEffect, useState } from 'react'
 import Link from 'next/link';
 import PageWrapper from '../components/PageWrapper'
 import HabitCard from '../components/HabitCard'
 import AuthForm from '../components/AuthForm'
-import { FiLogOut } from 'react-icons/fi'
 import { signOut, useSession } from 'next-auth/client';
 import { getSession } from "next-auth/client"
 import { useRouter } from 'next/router';
@@ -13,7 +12,7 @@ import { Session } from '../types/Session'
 import { Context } from 'vm';
 import {UserHabit} from '../types/Habit' 
 import Modal from '../components/Modal'
-
+import PropagateLoader from 'react-spinners/PropagateLoader'
 interface Habits {
   habits: UserHabit[]
 }
@@ -30,36 +29,18 @@ export default function Home({ session }: Session) {
   const router = useRouter()
 
   const loadData = async (email: string) => {
-    setWaiting(true)
     const response = await axios.get(`/api/badge?user=${email}`)
     console.log(response)
     setHabits(response.data.message)
     setWaiting(false)
   }
 
-  const confirmLogout = () => {
-    setModalTitle('Are You Sure You Want To Logout?')
-    setModalMessage('Please confirm logout, you can always sign in again later.')
-    setConfirm('Logout')
-    setShowModal(true)
-  }
-
-  const submit = () => {
-    if(confirm === 'Logout'){
-    signOut()
-    }
-  }
-
-  const closeModal = () => {
-    setShowModal(false)
-  }
-
   useEffect(() => {
     if (session) {
+    setWaiting(true)
+      setTimeout(() => 
       loadData(session.user.email)
-      .then(()=> console.log(habits))
-      console.log(habits)
-
+      , 2000)
     } else {
       router.replace('/auth')
     }
@@ -69,19 +50,20 @@ export default function Home({ session }: Session) {
 
   return (
     <PageWrapper>
+       
       <h1 className='underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Your Habits</h1>
+
+      {waiting && <div className='flex flex-col justify-center h-60 items-center'>
+        <h2 className='mb-2 text-purple-500'>Gathering Your Habits</h2>
+        <PropagateLoader color='#6B21A8'/>
+      </div>}
       <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {
           return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest} />
         })}
-        <div className='flex fixed z-0 inset-x-0 bottom-0 text-purple-600 justify-center items-center py-2  text-sm hover:text-purple-300 cursor-pointer' onClick={confirmLogout} >
-        <span>Logout</span>
-        <FiLogOut  />
       </div>
-      </div>
-      <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit}/>
-      {waiting && <div className='flex justify-center h-60 items-center'>Loading
-      </div>}
+
+     
       
     </PageWrapper>
   )
