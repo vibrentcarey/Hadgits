@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/client'
 import { useRouter } from 'next/router'
 import { getSession } from "next-auth/client"
 
-export default function Badges({session}) {
+export default function Badges({ session }) {
   const router = useRouter()
   useEffect(() => {
     if (!session) {
@@ -16,10 +16,12 @@ export default function Badges({session}) {
   return (
     <PageWrapper>
       <div className="flex flex-col items-center">
+        <h1 className='underline decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Badges</h1>
+
         {colors.map((color) => {
           return (
             <>
-              <h1 className={`${color.header} max-w-lg w-full font-bold text-2xl p-2 mt-8 mb-4 shadow-sm text-center text-white max-w-2xl rounded-md border-4 border-black`}>
+              <h1 className={`${color.header} max-w-md w-full font-bold text-2xl p-2 mt-8 mb-4 shadow-sm text-center text-white max-w-2xl rounded-md `}>
                 {color.level === '🥳' ? color.level : `Badge ${color.level}`}</h1>
               <BadgeBar color={color} />
             </>

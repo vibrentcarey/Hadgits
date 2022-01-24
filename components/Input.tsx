@@ -1,5 +1,5 @@
 import React, {ReactNode } from "react";
-
+import Input from "@material-tailwind/react/Input";
 interface InputProps {
   id: string;
   value: string;
@@ -10,9 +10,10 @@ interface InputProps {
   children: ReactNode;
   white?: boolean;
   type?: string;
+  num?: boolean
 }
 
-export default function Input({
+export default function LocalInput({
   id,
   value,
   placeholder,
@@ -22,14 +23,15 @@ export default function Input({
   type,
   min,
   max,
+  num
 }: InputProps) {
   return (
     <>
-      <label className={white ? "white" : "label"} htmlFor={id}>
+      <label className='text-purple-500 mb-3 inline-block' htmlFor={id}>
         {children}
       </label>
       <br />
-      <input
+      <Input
         className="input"
         value={value}
         placeholder={placeholder}
@@ -38,6 +40,8 @@ export default function Input({
         type={type}
         min={min}
         max={max}
+        color='purple'
+        inputmode={num && 'numeric'}
       />
     </>
   );

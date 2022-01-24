@@ -5,6 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Input from "./Input";
 import {  UserHabit } from "../types/Habit";
+import Card from "@material-tailwind/react/Card";
 
 interface FormProps {
   email: string;
@@ -48,22 +49,22 @@ console.log(email);
     },
   });
   return (
+    <Card className='p-8 max-w-lg w-full'>
     <form
-      className="p-8 max-w-lg w-full shadow-lg mt-10 flex flex-col border-4 border-black rounded-lg"
+      className="flex flex-col"
       onSubmit={formik.handleSubmit}
     >
-      <section className="mt-4">
+      <section className="my-2">
         <Input
           value={formik.values.title}
           onChange={formik.handleChange}
           id="title"
           placeholder="Enter the title for this streak"
-          white
         >
           Title
         </Input>
       </section>
-      <section className="mt-4">
+      <section className="my-2">
         <Input
           type="number"
           max={365}
@@ -72,48 +73,43 @@ console.log(email);
           onChange={formik.handleChange}
           id="length"
           placeholder="Enter active streak if you have one"
-          white
+          num
         >
           Active Days
         </Input>
       </section>
-      <section className="mt-4">
+      <section className="my-2">
         <Input
           value={formik.values.reason}
           onChange={formik.handleChange}
           id="reason"
           placeholder="Enter a reason for this streak"
-          white
         >
           Reason
         </Input>
       </section>
 
-      <section className="mt-4">
-        <label className="text-white font-bold text-2xl" htmlFor="resourceLink">
-          Resource Link
-        </label>
-        <br />
-        <textarea
-          className="w-full mt-2 h-24 rounded-lg outline-none text-white bg-primaryGrey border-4 border-black px-2 py-1 text-lg"
+      <section className="my-2">
+        <Input
           value={formik.values.resourceLink}
           onChange={formik.handleChange}
           id="resourceLink"
           placeholder="Enter a link to a useful resource"
-        />
+        >Resource link
+        </Input>
       </section>
-      <section className="mt-4">
+      <section className="my-2 mb-8">
         <Input
           value={formik.values.resource}
           onChange={formik.handleChange}
           id="resource"
           placeholder="Enter a title for the resource link"
-          white
         >
           Resource Title
         </Input>
       </section>
       <Button>Start Habit</Button>
     </form>
+    </Card>
   );
 }

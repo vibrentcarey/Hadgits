@@ -73,8 +73,8 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       axios.put('/api/badge', updatedInfo)
         .then(() => {
           setShowReasonInput(false)
-          refresh()
-        })
+            refresh()
+          })
     }
   })
 
@@ -89,13 +89,13 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
 
   // Delete A Card
   const handleDelete = (title) => {
-    axios.delete('/api/badge', { data: { title, user } });
-    refresh();
+    axios.delete('/api/badge', { data: { title, user } })
+    .then(() => refresh())
   }
   // Restart A Streak
   const handleRestart = (title) => {
-    axios.put('/api/badge', { title });
-    refresh();
+    axios.put('/api/badge', { title })
+    .then(() => refresh())
   }
 
   return (

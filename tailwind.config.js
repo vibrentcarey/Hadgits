@@ -9,7 +9,8 @@ module.exports = {
       colors: {
         primaryGrey: '#444444',
         primaryRed: '#DA0037',
-        primaryBlack: '#171717'
+        primaryBlack: '#171717',
+        backgroundPink: '##F1E8F3'
       },
     },
     screens: {

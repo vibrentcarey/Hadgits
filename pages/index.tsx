@@ -2,7 +2,6 @@
 import axios from 'axios'
 import { ContextType, useEffect, useState } from 'react'
 import Link from 'next/link';
-import PropagateLoader from "react-spinners/PropagateLoader";
 import PageWrapper from '../components/PageWrapper'
 import HabitCard from '../components/HabitCard'
 import AuthForm from '../components/AuthForm'
@@ -22,11 +21,11 @@ export default function Home({ session }: Session) {
   const [habits, setHabits] = useState<Habits | []>([]);
   const [waiting, setWaiting] = useState(false)
   const router = useRouter()
-  const loadData = async (email: string) => {
-    console.log(email);
-    setWaiting(true)
 
+  const loadData = async (email: string) => {
+    setWaiting(true)
     const response = await axios.get(`/api/badge?user=${email}`)
+    console.log(response)
     setHabits(response.data.message)
     setWaiting(false)
   }
@@ -38,24 +37,26 @@ export default function Home({ session }: Session) {
   useEffect(() => {
     if (session) {
       loadData(session.user.email)
+      .then(()=> console.log(habits))
+      console.log(habits)
+
     } else {
       router.replace('/auth')
     }
+    
   }, [session])
 
 
   return (
     <PageWrapper>
-      <FiLogOut className='text-white text-xl m-2 float-right hover:text-primaryRed cursor-pointer' onClick={handleLogout} />
-      <h1 className='underline decoration-primaryRed text-white text-center font-bold text-4xl mt-10'>Your Habits</h1>
+      <FiLogOut className='text-purple-600 text-2xl font-bold m-2 float-right hover:text-purple-700 cursor-pointer' onClick={handleLogout} />
+      <h1 className='underline decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {
           return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest} />
         })}
       </div>
-      {/* <><h2 className='text-white font-bold text-2xl'>Nothing Here -</h2> <Link  href='/create'><h2 className='text-primaryRed cursor-pointer font-bold text-2xl animate-pulse'> Add A Habit</h2></Link></> */}
-      {waiting && <div className='flex justify-center h-60 items-center'>
-        <PropagateLoader color='#DA0037' />
+      {waiting && <div className='flex justify-center h-60 items-center'>Loading
       </div>}
     </PageWrapper>
   )

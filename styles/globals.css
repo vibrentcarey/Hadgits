@@ -11,15 +11,13 @@ div#__next > div {
 }
 
 body {
-  font-family: "Hahmlet", serif;
-  background-color: #444444;
+  /* font-family: "Hahmlet", serif; */
+  background-color: #F1E8F3;
 }
 
 @layer components {
   .input {
     outline: none;
-    background-color: #444444;
-    border-bottom: 4px solid black;
     width: 100%;
     padding: 0.2rem;
     margin-bottom: 0.6rem;

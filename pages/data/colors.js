@@ -22,51 +22,51 @@ export const colors = [
   {
     level: 1,
     shades: red,
-    header: 'bg-gradient-to-r from-red-100 to-red-600'
+    header: 'bg-red-600'
   },
   {
     level: 2,
     shades: pink,
-    header: 'bg-gradient-to-r from-pink-100 to-pink-600'
+    header:  'bg-pink-600'
   },
   {
     level: 3,
     shades: purple,
-    header: 'bg-gradient-to-r from-purple-100 to-purple-600'
+    header: 'bg-purple-600'
   },
   {
     level: 4,
     shades: blue,
-    header: 'bg-gradient-to-r from-blue-100 to-blue-600'
+    header:  'bg-blue-600'
   },
   {
     level: 5,
     shades: cyan,
-    header: 'bg-gradient-to-r from-cyan-100 to-cyan-600'
+    header:  'bg-cyan-600'
   },
   {
     level: 6,
     shades: teal,
-    header: 'bg-gradient-to-r from-teal-100 to-teal-600'
+    header: 'bg-teal-600'
   },
   {
     level: 7,
     shades: green,
-    header: 'bg-gradient-to-r from-green-100 to-green-600'
+    header: ' bg-green-600'
   }, {
     level: 8,
     shades: lime,
-    header: 'bg-gradient-to-r from-lime-100 to-lime-600'
+    header:  'bg-lime-600'
 
   }, {
     level: 9,
     shades: orange,
-    header: 'bg-gradient-to-r from-orange-100 to-orange-600'
+    header: 'bg-orange-600'
   },
   {
     level: 10,
     shades: amber,
-    header: 'bg-gradient-to-r from-amber-100 to-amber-600'
+    header: ' bg-amber-600'
   },
   {
     level: '🥳',
