@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { FaMedal } from 'react-icons/fa';
+import { FaMedal, FaLock } from 'react-icons/fa';
 import { FaWallet } from 'react-icons/fa';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ export default function Header() {
         <Link href='/badges' passHref>
           <FaMedal className='text-white text-2xl hover:text-backgroundPink cursor-pointer' />
         </Link>
-      </nav> : <nav className='flex h-full justify-around items-center'>locked</nav>
+      </nav> : <nav className='flex h-full justify-around items-center'><FaLock className='text-white text-2xl'/></nav>
       }    </header>
   )
 }

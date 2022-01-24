@@ -21,7 +21,7 @@ export default function Create({ session }: Session) {
   return (
     <PageWrapper>
       <div className="flex flex-col mt-10 sm:mt-20 items-center">
-      <h1 className='underline decoration-purple-700 text-purple-600 text-center font-bold text-4xl mb-8'>
+      <h1 className='underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mb-8'>
         Start A New Habit
         </h1>
 

@@ -12,6 +12,7 @@ import { useRouter } from 'next/router';
 import { Session } from '../types/Session'
 import { Context } from 'vm';
 import {UserHabit} from '../types/Habit' 
+import Modal from '../components/Modal'
 
 interface Habits {
   habits: UserHabit[]
@@ -20,6 +21,12 @@ interface Habits {
 export default function Home({ session }: Session) {
   const [habits, setHabits] = useState<Habits | []>([]);
   const [waiting, setWaiting] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState('');
+  const [modalMessage, setModalMessage] = useState('');
+  const [confirm, setConfirm] = useState('')
+
+
   const router = useRouter()
 
   const loadData = async (email: string) => {
@@ -30,8 +37,21 @@ export default function Home({ session }: Session) {
     setWaiting(false)
   }
 
-  const handleLogout = () => {
+  const confirmLogout = () => {
+    setModalTitle('Are You Sure You Want To Logout?')
+    setModalMessage('Please confirm logout, you can always sign in again later.')
+    setConfirm('Logout')
+    setShowModal(true)
+  }
+
+  const submit = () => {
+    if(confirm === 'Logout'){
     signOut()
+    }
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
   }
 
   useEffect(() => {
@@ -49,13 +69,14 @@ export default function Home({ session }: Session) {
 
   return (
     <PageWrapper>
-      <FiLogOut className='text-purple-600 text-2xl font-bold m-2 float-right hover:text-purple-700 cursor-pointer' onClick={handleLogout} />
-      <h1 className='underline decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Your Habits</h1>
+      <FiLogOut className='text-purple-600 text-2xl font-bold m-2 float-right hover:text-purple-700 cursor-pointer' onClick={confirmLogout} />
+      <h1 className='underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {
           return <HabitCard key={habit._id} title={habit.title} reason={habit.reason} resources={habit.resources} length={habit.length} refresh={loadData} user={session.user.email} longest={habit.longest} />
         })}
       </div>
+      <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit}/>
       {waiting && <div className='flex justify-center h-60 items-center'>Loading
       </div>}
     </PageWrapper>
