@@ -13,6 +13,8 @@ import { Context } from 'vm';
 import {UserHabit} from '../types/Habit' 
 import Modal from '../components/Modal'
 import PropagateLoader from 'react-spinners/PropagateLoader'
+import isEqual from 'lodash/isEqual';
+
 interface Habits {
   habits: UserHabit[]
 }

@@ -52,7 +52,7 @@ export default function Header() {
         <Link href='/badges' passHref>
           <FaMedal className='text-white text-2xl hover:text-backgroundPink cursor-pointer' />
         </Link>
-        <FiLogOut className='text-white text-sm'  onClick={confirmLogout}/> 
+        <FiLogOut className='text-white text-sm hover:text-backgroundPink cursor-pointer '  onClick={confirmLogout}/> 
       </nav> : <nav className='flex h-full justify-around items-center'><FaLock className='text-white text-2xl'/></nav>
       }    </header>
   )
