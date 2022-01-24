@@ -69,7 +69,11 @@ export default function Home({ session }: Session) {
 
   return (
     <PageWrapper>
-      <FiLogOut className='text-purple-600 text-2xl font-bold m-2 float-right hover:text-purple-700 cursor-pointer' onClick={confirmLogout} />
+      <div className='float-right flex items-center text-purple-600 text-sm hover:text-purple-700 cursor-pointer' onClick={confirmLogout} >
+        <span>Logout</span>
+        <FiLogOut  />
+      </div>
+     
       <h1 className='underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10'>Your Habits</h1>
       <div className='flex flex-wrap justify-center items-start h-full py-6'>
         {habits && habits.map(habit => {

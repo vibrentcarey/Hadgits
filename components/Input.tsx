@@ -11,6 +11,7 @@ interface InputProps {
   white?: boolean;
   type?: string;
   num?: boolean
+  size?: string
 }
 
 export default function LocalInput({
@@ -23,11 +24,12 @@ export default function LocalInput({
   type,
   min,
   max,
-  num
+  num,
+  size
 }: InputProps) {
   return (
     <>
-      <label className='text-purple-500 mb-3 inline-block' htmlFor={id}>
+      <label className='text-purple-500 my-1 inline-block' htmlFor={id}>
         {children}
       </label>
       <br />
@@ -42,6 +44,8 @@ export default function LocalInput({
         max={max}
         color='purple'
         inputmode={num && 'numeric'}
+        size={size}
+        outline
       />
     </>
   );

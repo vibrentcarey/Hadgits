@@ -6,7 +6,8 @@ import { RiRestartLine, RiAddCircleLine } from 'react-icons/ri'
 import axios from 'axios';
 import { useFormik } from 'formik'
 import Input from './Input.tsx'
-
+import Card from "@material-tailwind/react/Card";
+import LocalButton from './Button';
 
 export default function HabitCard({ title, reason, resources, length, refresh, user, longest }) {
   const [showReasonInput, setShowReasonInput] = useState(false);
@@ -99,56 +100,63 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <article className=' bg-primaryBlack rounded-xl my-2 mx-2 px-8 py-4 shadow-2xl max-w-sm w-full '>
+    <Card className='my-2 mx-2 px-8 py-4 max-w-sm w-full '>
       {/* Delete Button */}
-      <FaTrashAlt className='float-right text-primaryRed text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
+      <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={() => handleDelete(title)
       } />
       {/* Card Title */}
-      <h2 className='text-white font-bold text-3xl text-center capitalize'>{title}</h2>
+      <h2 className='text-purple-600 font-bold text-3xl text-center capitalize'>{title}</h2>
 
       {/* Reasons */}
-      <div className='flex justify-between mt-4'>
-        <h2 className='text-white font-bold text-xl'>Reasons</h2>
+
+        <h2 className='text-purple-600 font-bold text-xl mt-5'>Reasons</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+
         {/* Reasons Edit Button */}
-        <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
-      </div>
+        <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse float-right cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
+
       <ul className='flex flex-wrap'>
-        {reason.map(reason => <li className='list-none text-white capitalize mx-2'> - {reason}</li>)}
+        {reason.map(reason => <li className='list-none font-bold text-purple-500 capitalize mx-2'> - {reason}</li>)}
       </ul>
       {/* Reason Input Dropdown */}
       {showReasonInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <Input label='reason' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' >New Reason</Input>
+        <Input size='sm' label='reason' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' >New Reason</Input>
+<LocalButton size='sm' color='purple'>Add Reason</LocalButton>
       </form>}
 
       {/* Resources */}
-      <div className='flex justify-between mt-4'>
-        <h2 className='text-white font-bold text-xl'>Resources</h2>
+
+        <h2 className='text-purple-600 font-bold text-xl mt-5'>Resources</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+
         {/* Resources Edit Button */}
-        <FaEdit className='text-white text-xl mx-2 hover:animate-pulse cursor-pointer' onClick={() => setShowResourcesInput(!showResourcesInput)} />
-      </div>
+        <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse cursor-pointer float-right' onClick={() => setShowResourcesInput(!showResourcesInput)} />
+
       <div className='flex flex-wrap'>
         {
           resources.map(resource => {
-            return <a href={resource.resourceLink} target='_blank' className='underline decoration-primaryRed text-white'>{resource.title}</a>
+            return <a href={resource.resourceLink} target='_blank' className=' font-bold underline decoration-purple-600 text-purple-500'>{resource.title}</a>
           })
         }</div>
       {/* Resource Input Dropdown */}
-      {showResourcesInput && <form className='mt-4' onSubmit={formik.handleSubmit}>
-        <Input label='resourceLink' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' >New Resource Link</Input>
+      {showResourcesInput && <form className='mt-2' onSubmit={formik.handleSubmit}>
+        <Input size='sm' label='resourceLink' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' >New Resource Link</Input>
         <br />
-        <Input label='resource' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' >New Resource Title</Input>
-        <button className='text-white text-lg'>+</button>
+        <Input size='sm' label='resource' value={formik.values.resource} onChange={formik.handleChange} id='resource' placeholder='Enter a new resource title...' >New Resource Title</Input>
+<LocalButton size='sm' color='purple'>Add Resource</LocalButton>
       </form>}
 
       {/* Current Streak */}
-      <h2 className='text-white font-bold text-xl'>Current Streak</h2>
+      <h2 className='text-purple-600 font-bold text-xl mt-5'>Current Streak</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+
       {/* Restart Button*/}
-      <RiRestartLine className='float-right text-primaryRed text-3xl mx-2 hover:animate-spin cursor-pointer' onClick={() => handleRestart(title)} />
-      <p className='text-green-500 font-bold text-xl'>{length}</p>
+      <RiRestartLine className='float-right text-purple-500 text-3xl mx-2 hover:animate-spin cursor-pointer' onClick={() => handleRestart(title)} />
+      <p className='text-purple-500 font-bold text-xl'>{length}</p>
       {/* Badge */}
-      <h2 className='text-white font-bold text-xl'>Highest Badge Earned</h2>
-      <hr className='border-b-2 border-primaryRed mb-4' />
+      <h2 className='text-purple-600 font-bold text-xl mt-5'>Highest Badge Earned</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
       <Badge day={highestBadge > 0 && highestBadge} style={background && background} />
-    </article>
+    </Card>
   )
 }

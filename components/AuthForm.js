@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/client'
 import { useFormik } from 'formik';
 import { useRouter } from 'next/router';
+import Card from "@material-tailwind/react/Card";
+import Input from './Input'
+import Button from './Button'
 
 export default function AuthForm() {
   const [loginMode, setLoginMode] = useState(true)
@@ -40,13 +43,30 @@ export default function AuthForm() {
 
 
   return (
-    <form className='mt-12' onSubmit={formik.handleSubmit}>
-      <input className='my-1' value={formik.values.email} onChange={formik.handleChange} id='email' />
-      <br />
-      <input value={formik.values.password} onChange={formik.handleChange} id='password' />
-      <br />
-      <button>{loginMode ? 'Login' : 'Sign Up'}</button>
-      {loginMode && <><h3>New Here?</h3> <span onClick={() => setLoginMode(false)}>Sign Up</span></>}
-      {!loginMode && <><h3>Already A Member?</h3> <span onClick={() => setLoginMode(true)}>Login</span></>}
-    </form>)
+    <Card className='p-8 max-w-md w-full mt-10'>
+      <form onSubmit={formik.handleSubmit}>
+        <Input
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          id="email"
+          placeholder="Enter your email"
+        >
+          Email
+        </Input>
+        <Input
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          id="password"
+          placeholder="Enter your password"
+          type='password'
+        >
+          Password
+        </Input>
+        <Button color='purple'>{loginMode ? 'Login' : 'Sign Up'}</Button>
+        {loginMode && <><h3>New Here? <span className='text-purple-500 font-bold' onClick={() => setLoginMode(false)}>Sign Up</span></h3></>}
+        {!loginMode && <><h3>Returning? <span className='text-purple-500 font-bold' onClick={() => setLoginMode(true)}>Login</span></h3></>}
+
+      </form>
+    </Card>
+  )
 }

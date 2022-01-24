@@ -108,7 +108,7 @@ console.log(email);
           Resource Title
         </Input>
       </section>
-      <Button>Start Habit</Button>
+      <Button color="purple">Start Habit</Button>
     </form>
     </Card>
   );
