@@ -10,35 +10,35 @@ import NavItem from "@material-tailwind/react/NavItem";
 import NavLink from "@material-tailwind/react/NavLink";
 import Icon from "@material-tailwind/react/Icon";
 
-export default function Navbar() {
+export default function Navbari() {
   const [openNavbar, setOpenNavbar] = useState(false);
-
+  console.log(openNavbar)
   return (
     <Navbar color="lightBlue" navbar>
-        <NavbarContainer>
-            <NavbarWrapper>
-                <NavbarBrand>Navbar</NavbarBrand>
-                <NavbarToggler
-                    color="white"
-                    onClick={() => setOpenNavbar(!openNavbar)}
-                    ripple="light"
-                />
-            </NavbarWrapper>
+      <NavbarContainer>
+        <NavbarWrapper>
+          <NavbarBrand>Navbar</NavbarBrand>
+          <NavbarToggler
+            color="white"
+            onClick={() => setOpenNavbar(!openNavbar)}
+            ripple="light"
+          />
+        </NavbarWrapper>
 
-            <NavbarCollapse open={openNavbar}>
-                <Nav>
-                    <NavItem active="light" ripple="light">
-                        <Icon name="language" size="xl" />
-                    </NavItem>
-                    <NavLink href="#navbar" ripple="light">
-                        <Icon name="account_circle" size="xl" />
-                    </NavLink>
-                    <NavItem ripple="light">
-                        <Icon name="settings" size="xl" />
-                    </NavItem>
-                </Nav>
-            </NavbarCollapse>
-        </NavbarContainer>
+        <nav>
+          <nav className="flex justify-center">
+            <NavItem active="light" ripple="light">
+              <Icon name="language" size="xl" />
+            </NavItem>
+            <NavLink href="#navbar" ripple="light">
+              <Icon name="account_circle" size="xl" />
+            </NavLink>
+            <NavItem ripple="light">
+              <Icon name="settings" size="xl" />
+            </NavItem>
+          </nav>
+        </nav>
+      </NavbarContainer>
     </Navbar>
   );
 }

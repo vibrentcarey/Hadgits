@@ -62,7 +62,7 @@ export default function Header() {
             <Nav>
               <NavItem active="light" ripple="light" style={{ margin: '0.4rem 1rem', padding: '0.4rem', maxWidth: '400px' }}>
                 <Link href='/' passHref>
-                  <div className="flex items-center">
+                  <div className="flex items-center hover:cursor-pointer">
                     <FaWallet className='text-white text-2xl hover:text-backgroundPink cursor-pointer active:text-purple-500 inline-block mx-2' />
                     <span className="font-bold text-lg">Habits</span>
                   </div>
@@ -70,7 +70,7 @@ export default function Header() {
               </NavItem>
               <NavItem active="light" ripple="light" style={{ margin: '0.4rem 1rem', padding: '0.4rem', maxWidth: '400px' }}>
                 <Link href='/create' passHref>
-                  <div className="flex items-center">
+                  <div className="flex items-center hover:cursor-pointer">
                     <BsFillPlusSquareFill className='text-white text-2xl hover:text-backgroundPink cursor-pointer active:text-purple-500 inline-block mx-2' />
                     <span className="font-bold text-lg">Create</span>
                   </div>
@@ -78,14 +78,14 @@ export default function Header() {
               </NavItem>
               <NavItem active={session && 'light'} ripple="light" style={{ margin: '0.4rem 1rem', padding: '0.4rem', maxWidth: '400px' }}>
                 <Link href='/badges' passHref>
-                  <div className="flex items-center">
+                  <div className="flex items-center hover:cursor-pointer">
                     <FaMedal className='text-white text-2xl hover:text-backgroundPink cursor-pointer active:text-purple-500 inline-block mx-2' />
                     <span className="font-bold text-lg">Badges</span>
                   </div>
                 </Link>
               </NavItem>
               <NavItem active="light" ripple="light" style={{ margin: '0.4rem 1rem', padding: '0.4rem', maxWidth: '400px' }}  onClick={confirmLogout}>
-                <div className="flex items-center">
+                <div className="flex items-center hover:cursor-pointer">
                   <FiLogOut className='text-white text-2xl hover:text-backgroundPink cursor-pointer mx-2' />
                   <span className="font-bold text-lg">Logout</span>
                 </div>

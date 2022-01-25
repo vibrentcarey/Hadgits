@@ -11,7 +11,7 @@ import * as Yup from 'yup'
 
 //TODO: Add form validation
 export default function AuthForm() {
-  const [loginMode, setLoginMode] = useState(true)
+  const [loginMode, setLoginMode] = useState(false)
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -54,8 +54,9 @@ export default function AuthForm() {
 
 
   return (
-    <Card className='p-8 max-w-md w-full mt-10'>
+    <Card className='p-8 max-w-md w-full mt-2 mb-10 '>
       <form onSubmit={formik.handleSubmit}>
+      <h2 className='text-purple-600 font-bold text-3xl text-center capitalize'>{loginMode ? 'Login' : 'SignUp'}</h2>
         <Input
           value={formik.values.email}
           onChange={formik.handleChange}
