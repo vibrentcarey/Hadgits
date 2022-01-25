@@ -14,7 +14,6 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "typeRoots": [ "./types", "./node_modules/@types"]
   }, 
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.tsx", "pages/api/badge.js"],
   "exclude": ["node_modules", "typings"]
