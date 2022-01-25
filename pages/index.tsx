@@ -40,13 +40,13 @@ export default function Home({ session }: Session) {
 
   return (
     <PageWrapper>
-      <h1 className="underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mt-10">
+      <h1 className="underline tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold text-4xl mt-10">
         Your Habits
       </h1>
 
       {waiting && (
         <div className="flex flex-col justify-center h-60 items-center">
-          <h2 className="mb-2 text-purple-500">Gathering Your Habits</h2>
+          <h2 className="mb-2 text-primaryPurple text-lg font-bold">Gathering Your Habits</h2>
           <PropagateLoader color="#6B21A8" />
         </div>
       )}

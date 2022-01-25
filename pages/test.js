@@ -46,7 +46,7 @@ export default function Header() {
   }
 
   return (
-    <Navbar color="deepPurple" style={{borderRadius: 'none'}}>
+    <Navbar color="deepPurple" style={{borderRadius: '0px'}}>
       <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit} />
       <NavbarContainer>
         <NavbarWrapper>
@@ -72,7 +72,7 @@ export default function Header() {
                 </Link>
               </NavItem>
               <NavItem active="light" ripple="light" style={{ margin: '0.4rem 1rem', padding: '0.4rem', width: '25%', minWidth: '120px' }}>
-                <Link href='/' passHref>
+                <Link href='/create' passHref>
                   <div className="flex items-center">
                     <BsFillPlusSquareFill className='text-white text-2xl hover:text-backgroundPink cursor-pointer active:text-purple-500 inline-block mx-2' />
                     <span className="font-bold text-lg">Create</span>
@@ -80,7 +80,7 @@ export default function Header() {
                 </Link>
               </NavItem>
               <NavItem active={session && 'light'} ripple="light" style={{ margin: '0.4rem 1rem', padding: '0.4rem', width: '25%', minWidth: '120px' }}>
-                <Link href='/' passHref>
+                <Link href='/badges' passHref>
                   <div className="flex items-center">
                     <FaMedal className='text-white text-2xl hover:text-backgroundPink cursor-pointer active:text-purple-500 inline-block mx-2' />
                     <span className="font-bold text-lg">Badges</span>

@@ -1,3 +1,4 @@
+//TODO: Change purple badges to higher numbers
 const red = [{ day: 0, shade: 'bg-red-200' }, { day: 3, shade: 'bg-red-300' }, { day: 6, shade: 'bg-red-400' }, { day: 9, shade: 'bg-red-500' }, { day: 12, shade: 'text-white bg-red-600 text-white' }]
 
 const pink = [{ day: 16, shade: 'bg-pink-200' }, { day: 20, shade: 'bg-pink-300' }, { day: 24, shade: 'bg-pink-400' }, { day: 28, shade: 'bg-pink-500' }, { day: 32, shade: 'bg-pink-600 text-white' }]

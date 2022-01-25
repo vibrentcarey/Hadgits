@@ -14,7 +14,7 @@ export default function Auth({ session }) {
   }, [session])
   return (
     <PageWrapper>
-      <h1 className='decoration-purple-700 text-purple-600 text-center font-bold underline text-5xl mt-10'><BiBadgeCheck className='inline-block'/>Hadgits</h1>
+      <h1 className='tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold underline text-5xl mt-10'><BiBadgeCheck className='inline-block'/>Hadgits</h1>
       <AuthForm />
     </PageWrapper>
   )

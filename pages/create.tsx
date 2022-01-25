@@ -9,7 +9,10 @@ import {Session} from '../types/Session'
 
 export default function Create({ session }: Session) {
   const [email, setEmail] = useState("");
-  const { user } = session;
+  let user;
+  if(session){
+    user  = session.user
+  }
   const router = useRouter();
   useEffect(() => {
     if (!session) {
@@ -21,7 +24,7 @@ export default function Create({ session }: Session) {
   return (
     <PageWrapper>
       <div className="flex flex-col mt-10 sm:mt-20 items-center">
-      <h1 className='underline tracking-wider decoration-purple-700 text-purple-600 text-center font-bold text-4xl mb-8'>
+      <h1 className='underline tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold text-4xl mb-8'>
         Start A New Habit
         </h1>
 

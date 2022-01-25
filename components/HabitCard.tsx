@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Badge from './Badge'
 import { colors } from '../pages/data/colors';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import { RiRestartLine, RiAddCircleLine } from 'react-icons/ri'
+import { RiRestartLine } from 'react-icons/ri'
 import axios from 'axios';
 import { useFormik } from 'formik'
 import Input from './Input.tsx'
@@ -10,9 +10,9 @@ import Card from "@material-tailwind/react/Card";
 import LocalButton from './Button';
 import { signOut,  } from 'next-auth/client';
 import Modal from '../components/Modal'
-import { Animate, AnimateKeyframes, AnimateGroup } from "react-simple-animate";
+import { Animate } from "react-simple-animate";
 
-
+//TODO: Add form validation
 export default function HabitCard({ title, reason, resources, length, refresh, user, longest }) {
   const [showReasonInput, setShowReasonInput] = useState(false);
   const [showResourcesInput, setShowResourcesInput] = useState(false);
@@ -154,7 +154,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse float-right cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
 
       <ul className='flex flex-wrap justify-evenly'>
-        {reason.map(reason => <li className='list-none font-bold text-purple-500 capitalize mx-2'> - {reason}</li>)}
+        {reason.map(reason => <li key={reason}className='list-none font-bold text-purple-500 capitalize mx-2'> - {reason}</li>)}
       </ul>
       {/* Reason Input Dropdown */}
      
@@ -178,7 +178,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       <div className='flex flex-wrap justify-evenly'>
         {
           resources.map(resource => {
-            return <a href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-purple-600 text-purple-500'>{resource.title}</a>
+            return <a key={resource.title} href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-purple-600 text-purple-500'>{resource.title}</a>
           })
         }</div>
       {/* Resource Input Dropdown */}

@@ -7,6 +7,7 @@ import Card from "@material-tailwind/react/Card";
 import Input from './Input'
 import Button from './Button'
 
+//TODO: Add form validation
 export default function AuthForm() {
   const [loginMode, setLoginMode] = useState(true)
   const router = useRouter();

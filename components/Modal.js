@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+
+import React from "react";
 import Modal from "@material-tailwind/react/Modal";
 import ModalHeader from "@material-tailwind/react/ModalHeader";
 import ModalBody from "@material-tailwind/react/ModalBody";
 import ModalFooter from "@material-tailwind/react/ModalFooter";
 import Button from "@material-tailwind/react/Button";
-import { title } from "process";
 
 export default function ConfirmModal({ title, message, showModal, closeModal, confirm, submit }) {
   return (
-    <Modal size="sm" active={showModal} >
+    <Modal size="sm" active={showModal} toggler={closeModal}>
       <ModalHeader toggler={closeModal}>
         {title}
       </ModalHeader>

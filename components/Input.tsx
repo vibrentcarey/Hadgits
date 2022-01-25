@@ -33,7 +33,7 @@ export default function LocalInput({
 }: InputProps) {
   return (
     <>
-      <label className='text-purple-500 my-1 inline-block' htmlFor={id}>
+      <label className='text-purple-500 my-1 inline-block font-bold' htmlFor={id}>
         {children}
       </label>
       <br />
