@@ -61,7 +61,8 @@ export default function Auth({ session }) {
           </AnimationOnScroll>}
           <p className='text-2xl font-bold'>Bad Habits?</p>
         </div>
-        {browser && <AnimationOnScroll  animateIn="animate__lightSpeedInRight" >
+        {browser && <AnimationOnScroll  animateIn="animate__bounceInDown" 
+        animateOut='animate__bounceOutDown'>
           <H4 style={{ margin: ' 0' }} color="deepPurple">SIGN UP NOW</H4>
         </AnimationOnScroll>}
         {browser && <AnimationOnScroll 
