@@ -13,7 +13,7 @@ interface InputProps {
   type?: string;
   num?: boolean
   size?: string
-  error?: string
+  error?: string | boolean
 }
 
 export default function LocalInput({

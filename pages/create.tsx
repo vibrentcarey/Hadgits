@@ -7,9 +7,15 @@ import {  getSession } from "next-auth/client";
 import { Context } from "vm";
 import {Session} from '../types/Session'
 
+interface User {
+  name: null;
+  email: string;
+  image :null
+}
+
 export default function Create({ session }: Session) {
   const [email, setEmail] = useState("");
-  let user;
+  let user : User;
   if(session){
     user  = session.user
   }

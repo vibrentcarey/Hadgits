@@ -5,11 +5,11 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { RiRestartLine } from 'react-icons/ri'
 import axios from 'axios';
 import { useFormik } from 'formik'
-import Input from './Input.tsx'
+import Input from './Input'
 import Card from "@material-tailwind/react/Card";
 import LocalButton from './Button';
 import { signOut,  } from 'next-auth/client';
-import Modal from '../components/Modal'
+import Modal from './Modal'
 import { Animate } from "react-simple-animate";
 
 //TODO: Add form validation

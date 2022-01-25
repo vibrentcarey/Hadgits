@@ -8,13 +8,11 @@ import { Session } from "../types/Session";
 import { Context } from "vm";
 import { UserHabit } from "../types/Habit";
 import PropagateLoader from "react-spinners/PropagateLoader";
-interface Habits {
-  habits: UserHabit[];
-}
+
 
 export default function Home({ session }: Session) {
   // habits and waiting state
-  const [habits, setHabits] = useState<Habits | []>([]);
+  const [habits, setHabits] = useState<any[]>([]);
   const [waiting, setWaiting] = useState(false);
   // create the router
   const router = useRouter();
