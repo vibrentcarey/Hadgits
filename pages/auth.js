@@ -45,7 +45,8 @@ export default function Auth({ session }) {
         <Quote style={{ margin: '6rem 1rem', textAlign: 'center', fontWeight: 'bold', maxWidth: '600px' }} color="deepPurple" footer="John Dryden" cite=''>
           We first make our habits, and then our habits make us.
         </Quote>
-        <section className='md:grid grid-cols-2'>
+        <hr className='border border-primaryPurple w-full max-w-lg'/>
+        <section className='sm:grid grid-cols-2 max-w-xl'>
           {/* INTRO TEXT */}
           {browser && <AnimationOnScroll animateIn="animate__fadeIn" animateOut='animate__fadeOut'>
             <IntroText />
@@ -55,9 +56,10 @@ export default function Auth({ session }) {
               <MdOutlineCatchingPokemon className='text-primaryPurple text-9xl w-full' />
             </AnimationOnScroll>}
           </div>
-
         </section>
-        <section className='md:grid grid-cols-2 gap-20'>
+        <hr className='border border-primaryPurple w-full max-w-lg my-4'/>
+
+        <section className='sm:grid grid-cols-2 gap-10'>
           {/* INPUT */}
           {browser && <AnimationOnScroll animateIn="animate__rotateInDownLeft" animateOut='animate__rotateOutDownRight'>
               <ImageTitle title='Add Habits' >
@@ -74,6 +76,8 @@ export default function Auth({ session }) {
             </ImageTitle>
           </AnimationOnScroll>}
         </section>
+        <hr className='border border-primaryPurple w-full max-w-lg my-4'/>
+
         {/* SHAKE */}
         <div className='my-24 w-full max-w-md flex flex-col items-center'>
           <p className='font-bold text-2xl'>Are You Ready To</p>
@@ -82,6 +86,8 @@ export default function Auth({ session }) {
           </AnimationOnScroll>}
           <p className='text-2xl font-bold'>Bad Habits?</p>
         </div>
+        <hr className='border border-primaryPurple w-full max-w-lg my-4'/>
+
         {/* FORM */}
         {browser && <AnimationOnScroll animateIn="animate__bounceInDown"
           animateOut='animate__bounceOutDown'>
