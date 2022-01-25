@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 import { Session } from "../types/Session";
 import { Context } from "vm";
 import PropagateLoader from "react-spinners/PropagateLoader";
-
+import Button from '../components/Button'
+import Link from "next/link";
 
 export default function Home({ session }: Session) {
   // habits and waiting state
@@ -33,22 +34,24 @@ export default function Home({ session }: Session) {
     } else {
       router.replace("/auth");
     }
-  }, [session]);
+  }, [session, JSON.stringify(habits)]);
 
   return (
     <PageWrapper>
       <h1 className="underline tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold text-4xl mt-10">
         Your Habits
       </h1>
-
       {waiting && (
         <div className="flex flex-col justify-center h-60 items-center">
-          <h2 className="mb-2 text-primaryPurple text-lg font-bold">Gathering Your Habits</h2>
+          <h2 className="mb-2 text-primaryPurple text-lg font-bold">Checking For Habits</h2>
           <PropagateLoader color="#6B21A8" />
         </div>
       )}
       <div className="flex flex-wrap justify-center items-start h-full py-6">
-        {habits &&
+        <div className="flex flex-col items-center justify-center mt-20">
+        {!waiting && habits.length === 0 && <><p className="text-primaryPurple text-lg font-bold">Can't Find Anything Here 🧐 ... </p> <Link href='/create'><p className="text-2xl text-purple-500 font-bold mt-4 hover:animate-pulse cursor-pointer ">Add A Habit</p></Link></>}
+        </div>
+        {!waiting && habits &&
           habits.map((habit) => {
             return (
               <HabitCard

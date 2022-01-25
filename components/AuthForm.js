@@ -56,7 +56,7 @@ export default function AuthForm() {
   return (
     <Card className='p-8 max-w-md w-full mt-2 mb-10 '>
       <form onSubmit={formik.handleSubmit}>
-      <h2 className='text-purple-600 font-bold text-3xl text-center capitalize'>{loginMode ? 'Login' : 'SignUp'}</h2>
+      <h2 className='text-purple-600 font-bold text-3xl text-center capitalize'>{loginMode ? 'Login' : 'Sign Up'}</h2>
         <Input
           value={formik.values.email}
           onChange={formik.handleChange}
@@ -64,6 +64,7 @@ export default function AuthForm() {
           placeholder="Enter your email"
           error={formik.touched.email && formik.errors.email}
           onBlur={formik.handleBlur}
+          auto
         >
           Email
         </Input>

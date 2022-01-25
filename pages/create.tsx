@@ -29,7 +29,7 @@ export default function Create({ session }: Session) {
   }, [session]);
   return (
     <PageWrapper>
-      <div className="flex flex-col mt-10 sm:mt-20 items-center">
+      <div className="flex flex-col mt-10 sm:mt-20 items-center px-8">
       <h1 className='underline tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold text-4xl mb-8'>
         Start A New Habit
         </h1>

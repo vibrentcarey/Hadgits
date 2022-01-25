@@ -1,9 +1,9 @@
 //TODO: Change purple badges to higher numbers
 const red = [{ day: 0, shade: 'bg-red-200' }, { day: 3, shade: 'bg-red-300' }, { day: 6, shade: 'bg-red-400' }, { day: 9, shade: 'bg-red-500' }, { day: 12, shade: 'text-white bg-red-600 text-white' }]
 
-const pink = [{ day: 16, shade: 'bg-pink-200' }, { day: 20, shade: 'bg-pink-300' }, { day: 24, shade: 'bg-pink-400' }, { day: 28, shade: 'bg-pink-500' }, { day: 32, shade: 'bg-pink-600 text-white' }]
+const orange = [{ day: 16, shade: 'bg-orange-200' }, { day: 20, shade: 'bg-orange-300' }, { day: 24, shade: 'bg-orange-400' }, { day: 28, shade: 'bg-orange-500' }, { day: 32, shade: 'bg-orange-600 text-white' }]
 
-const purple = [{ day: 37, shade: 'bg-purple-200' }, { day: 42, shade: 'bg-purple-300' }, { day: 47, shade: 'bg-purple-400' }, { day: 52, shade: 'bg-purple-500' }, { day: 57, shade: 'bg-purple-600 text-white' }]
+const purple = [{ day: 320, shade: 'bg-purple-200' }, { day: 330, shade: 'bg-purple-300' }, { day: 340, shade: 'bg-purple-400' }, { day: 350, shade: 'bg-purple-500' }, { day: 360, shade: 'bg-purple-600 text-white' }]
 
 const blue = [{ day: 63, shade: 'bg-blue-200' }, { day: 69, shade: 'bg-blue-300' }, { day: 75, shade: 'bg-blue-400' }, { day: 81, shade: 'bg-blue-500' }, { day: 87, shade: 'bg-blue-600 text-white' }]
 
@@ -15,9 +15,9 @@ const green = [{ day: 171, shade: 'bg-green-200' }, { day: 180, shade: 'bg-green
 
 const lime = [{ day: 216, shade: 'bg-lime-200' }, { day: 226, shade: 'bg-lime-300' }, { day: 236, shade: 'bg-lime-400' }, { day: 246, shade: 'bg-lime-500' }, { day: 256, shade: 'bg-lime-600 text-white' }]
 
-const orange = [{ day: 267, shade: 'bg-orange-200' }, { day: 278, shade: 'bg-orange-300' }, { day: 289, shade: 'bg-orange-400' }, { day: 300, shade: 'bg-orange-500' }, { day: 311, shade: 'bg-orange-600 text-white' }]
+const pink = [{ day: 267, shade: 'bg-pink-200' }, { day: 278, shade: 'bg-pink-300' }, { day: 289, shade: 'bg-pink-400' }, { day: 300, shade: 'bg-pink-500' }, { day: 311, shade: 'bg-pink-600 text-white' }]
 
-const amber = [{ day: 320, shade: 'bg-amber-200' }, { day: 330, shade: 'bg-amber-300' }, { day: 340, shade: 'bg-amber-400' }, { day: 350, shade: 'bg-amber-500' }, { day: 360, shade: 'bg-amber-600 text-white' }]
+const amber = [{ day: 37, shade: 'bg-amber-200' }, { day: 42, shade: 'bg-amber-300' }, { day: 47, shade: 'bg-amber-400' }, { day: 52, shade: 'bg-amber-500' }, { day: 57, shade: 'bg-amber-600 text-white' }]
 
 export const colors = [
   {
@@ -27,13 +27,13 @@ export const colors = [
   },
   {
     level: 2,
-    shades: pink,
-    header:  'bg-pink-600'
+    shades: orange,
+    header:  'bg-orange-600'
   },
   {
     level: 3,
-    shades: purple,
-    header: 'bg-purple-600'
+    shades: amber,
+    header: 'bg-amber-600'
   },
   {
     level: 4,
@@ -61,13 +61,13 @@ export const colors = [
 
   }, {
     level: 9,
-    shades: orange,
-    header: 'bg-orange-600'
+    shades: pink,
+    header: 'bg-pink-600'
   },
   {
     level: 10,
-    shades: amber,
-    header: ' bg-amber-600'
+    shades: purple,
+    header: ' bg-purple-600'
   },
   {
     level: '🥳',

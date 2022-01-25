@@ -137,7 +137,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <Card className='my-4 mx-2 px-8 py-4 max-w-sm w-full z-10'>
+    <Card className='my-4 mx-2 px-8 py-4 max-w-sm w-full '>
        <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit}/>
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={confirmDelete

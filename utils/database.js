@@ -73,11 +73,13 @@ export async function updateHabit(req, res) {
   try {
     // connect to the database
     const { db } = await connectToDatabase();
-    // update the published status of the post
-    await db.collection('habits').updateOne(
-      { title },
-      { $set: { length: 0 } }
-    );
+    // update the length of streak 
+    if (!reason && !resource) {
+      await db.collection('habits').updateOne(
+        { title },
+        { $set: { length: 0 } }
+      );
+    }
     // add a new reason to the reasons array
     if (req.body.reason) {
       await db.collection('habits').updateOne(

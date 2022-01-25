@@ -12,6 +12,9 @@ import IntroText from '../components/IntroText';
 import ImageTitle from '../components/ImageTitle';
 import Badge from '../components/Badge'
 import H4 from "@material-tailwind/react/Heading4";
+import Input from '../components/Input'
+import { MdOutlineCatchingPokemon } from 'react-icons/md'
+import Card from '@material-tailwind/react/Card';
 
 export default function Auth({ session }) {
   const router = useRouter();
@@ -34,41 +37,60 @@ export default function Auth({ session }) {
 
   return (
     <PageWrapper>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center px-8'>
         {browser && <AnimationOnScroll animateIn="animate__jackInTheBox">
           <Intro />
         </AnimationOnScroll>}
-        <Quote style={{ margin: '3rem 1rem', textAlign: 'center', fontWeight: 'bold', maxWidth: '600px' }} color="deepPurple" footer="John Dryden" >
+        {/* QUOTE */}
+        <Quote style={{ margin: '6rem 1rem', textAlign: 'center', fontWeight: 'bold', maxWidth: '600px' }} color="deepPurple" footer="John Dryden" cite=''>
           We first make our habits, and then our habits make us.
         </Quote>
-        {browser && <AnimationOnScroll animateIn="animate__fadeIn" animateOut='animate__fadeOut'>
-          <IntroText />
-        </AnimationOnScroll>}
-        {browser && <AnimationOnScroll animateIn="animate__flipInX" animateOut='animate__flipOutX'>
+        <section className='md:grid grid-cols-2'>
+          {/* INTRO TEXT */}
+          {browser && <AnimationOnScroll animateIn="animate__fadeIn" animateOut='animate__fadeOut'>
+            <IntroText />
+          </AnimationOnScroll>}
+          <div className='flex items-center justify-center mt-10'>
+            {browser && <AnimationOnScroll animateIn="animate__rotateIn" animateOut='animate__rotateOut'>
+              <MdOutlineCatchingPokemon className='text-primaryPurple text-9xl w-full' />
+            </AnimationOnScroll>}
+          </div>
 
-          <ImageTitle title='Earn Badges'>
-            <Badge style='bg-red-600' day={15} />
-            <Badge style='bg-orange-600' day={38} />
-            <Badge style='bg-pink-600' day={150} />
-            <Badge style='bg-purple-600' day={350} />
-            <Badge style='bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 text-white' day={365} />
-          </ImageTitle>
-        </AnimationOnScroll>}
-        <div className='my-36 w-full max-w-md flex flex-col items-center'>
+        </section>
+        <section className='md:grid grid-cols-2 gap-20'>
+          {/* INPUT */}
+          {browser && <AnimationOnScroll animateIn="animate__rotateInDownLeft" animateOut='animate__rotateOutDownRight'>
+              <ImageTitle title='Add Habits' >
+                <Input color='purple' id="habit" placeholder="Build your streaks.." read >Add A Habit</Input>
+              </ImageTitle>
+          </AnimationOnScroll>}
+          {/* BADGES */}
+          {browser && <AnimationOnScroll animateIn="animate__flipInX" animateOut='animate__flipOutX'>
+            <ImageTitle title='Earn Badges' flex>
+              <Badge style='bg-red-600' day={15} />
+              <Badge style='bg-orange-600' day={38} />
+              <Badge style='bg-pink-600' day={150} />
+              <Badge style='bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 text-white' day={365} />
+            </ImageTitle>
+          </AnimationOnScroll>}
+        </section>
+        {/* SHAKE */}
+        <div className='my-24 w-full max-w-md flex flex-col items-center'>
           <p className='font-bold text-2xl'>Are You Ready To</p>
           {browser && <AnimationOnScroll animateIn="animate__shakeX">
             <H4 style={{ margin: '1rem 0 ' }} color="deepPurple">SHAKE OFF</H4>
           </AnimationOnScroll>}
           <p className='text-2xl font-bold'>Bad Habits?</p>
         </div>
-        {browser && <AnimationOnScroll  animateIn="animate__bounceInDown" 
-        animateOut='animate__bounceOutDown'>
-          <H4 style={{ margin: ' 0' }} color="deepPurple">SIGN UP NOW</H4>
+        {/* FORM */}
+        {browser && <AnimationOnScroll animateIn="animate__bounceInDown"
+          animateOut='animate__bounceOutDown'>
+          <H4 style={{ marginTop: '8rem' }} color="deepPurple">SIGN UP NOW</H4>
         </AnimationOnScroll>}
-        {browser && <AnimationOnScroll 
-        className='min-w-full flex items-center justify-center' animateIn="animate__bounceInUp"
-        animateOut="animate__bounceOutDown" >
-        <AuthForm />
+        {browser && <AnimationOnScroll
+          className='min-w-full flex items-center justify-center' animateIn="animate__bounceInUp"
+          animateOut="animate__bounceOutDown" >
+          <AuthForm />
 
         </AnimationOnScroll>}
       </div>

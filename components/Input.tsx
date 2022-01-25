@@ -1,5 +1,6 @@
 import React, {ReactNode } from "react";
 import Input from "@material-tailwind/react/Input";
+
 interface InputProps {
   id: string;
   value: string;
@@ -9,11 +10,12 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
   children: ReactNode;
-  white?: boolean;
   type?: string;
   num?: boolean
   size?: string
   error?: string | boolean
+  read?: boolean
+  auto?: boolean
 }
 
 export default function LocalInput({
@@ -22,13 +24,13 @@ export default function LocalInput({
   placeholder,
   onChange,
   children,
-  white,
   type,
   min,
   max,
   num,
   size,
   error,
+  read,
   onBlur,
 }: InputProps) {
   return (
@@ -52,6 +54,7 @@ export default function LocalInput({
         outline
         error={error}
         onBlur={onBlur}
+        readOnly={read}
       />
     </>
   );

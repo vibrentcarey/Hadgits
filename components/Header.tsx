@@ -6,7 +6,7 @@ import NavbarCollapse from "@material-tailwind/react/NavbarCollapse";
 import Nav from "@material-tailwind/react/Nav";
 import NavItem from "@material-tailwind/react/NavItem";
 
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FaMedal, } from 'react-icons/fa';
 import { FaWallet } from 'react-icons/fa';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
@@ -16,6 +16,7 @@ import { BiBadgeCheck } from 'react-icons/bi'
 import { FiLogOut } from 'react-icons/fi'
 import { signOut, } from 'next-auth/client';
 import Modal from '../components/Modal'
+import { useRouter } from "next/router";
 
 //TODO: Style active links
 export default function Header() {
@@ -38,9 +39,17 @@ export default function Header() {
     }
   }
 
+  const router = useRouter()
+  console.log(router);
+  
+
   const closeModal = () => {
     setShowModal(false)
   }
+
+  useEffect(() => {
+    setOpenMenu(false)
+  }, [router.route])
 
   return (
     <Navbar color="deepPurple">
