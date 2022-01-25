@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PageWrapper from '../components/PageWrapper'
-import { colors } from '../colors'
+import { colors } from './colors'
 import BadgeBar from '../components/BadgeBar'
 import { useRouter } from 'next/router'
 import { getSession } from "next-auth/client"

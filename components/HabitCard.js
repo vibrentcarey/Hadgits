@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Badge from './Badge'
-import { colors } from '../colors';
+import { colors } from '../pages/colors';
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
 import { RiRestartLine } from 'react-icons/ri'
 import axios from 'axios';

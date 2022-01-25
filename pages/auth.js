@@ -14,8 +14,10 @@ export default function Auth({ session }) {
   }, [session])
   return (
     <PageWrapper>
+    <div className='flex flex-col items-center'>
       <h1 className='tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold underline text-5xl mt-10'><BiBadgeCheck className='inline-block'/>Hadgits</h1>
       <AuthForm />
+      </div>
     </PageWrapper>
   )
 }

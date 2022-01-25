@@ -6,6 +6,8 @@ import { useRouter } from 'next/router';
 import Card from "@material-tailwind/react/Card";
 import Input from './Input'
 import Button from './Button'
+import * as Yup from 'yup'
+
 
 //TODO: Add form validation
 export default function AuthForm() {
@@ -16,6 +18,14 @@ export default function AuthForm() {
       email: '',
       password: '',
     },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Invalid email address')
+        .required("Email is required"),
+      password: Yup.string()
+        .min(7, "Must be at least 7 characters")
+        .required("Password is required"),
+    }),
     onSubmit: values => {
       if (loginMode) {
         login(values.email, values.password)
@@ -51,18 +61,24 @@ export default function AuthForm() {
           onChange={formik.handleChange}
           id="email"
           placeholder="Enter your email"
+          error={formik.touched.email && formik.errors.email}
+          onBlur={formik.handleBlur}
         >
           Email
         </Input>
+        <br/>
         <Input
           value={formik.values.password}
           onChange={formik.handleChange}
           id="password"
           placeholder="Enter your password"
           type='password'
+          error={formik.touched.password && formik.errors.password}
+          onBlur={formik.handleBlur}
         >
           Password
         </Input>
+        <br/>
         <Button color='purple'>{loginMode ? 'Login' : 'Sign Up'}</Button>
         {loginMode && <><h3>New Here? <span className='text-purple-500 font-bold' onClick={() => setLoginMode(false)}>Sign Up</span></h3></>}
         {!loginMode && <><h3>Returning? <span className='text-purple-500 font-bold' onClick={() => setLoginMode(true)}>Login</span></h3></>}

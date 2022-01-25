@@ -75,3 +75,9 @@ export const colors = [
     header:"bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500 text-white"
   }
 ]
+
+import React from 'react';
+
+export default function Colors() {
+  return <div>Nothing here!</div>;
+}
