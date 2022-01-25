@@ -8,6 +8,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.3",
     "@material-tailwind/react": "0.3.4",
     "axios": "^0.24.0",
     "bcrypt": "^5.0.1",

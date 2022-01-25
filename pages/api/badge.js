@@ -1,24 +1,20 @@
-import { getPosts, addPost, deletePost, updatePost } from '../../utils/database'
+import { getHabits, addHabit, deleteHabit, updateHabit } from '../../utils/database'
 
 // Handle All Requests to 'api/badge'
-export default async function handler(req, res) {
-    // switch the methods
+export default async function handler(req, res){
+    // Switch The Methods
     switch (req.method) {
         case 'GET': {
-            return getPosts(req, res);
+            return getHabits(req, res);
         }
-
         case 'POST': {
-            return addPost(req, res);
+            return addHabit(req, res);
         }
-
         case 'PUT': {
-            return updatePost(req, res);
+            return updateHabit(req, res);
         }
-
         case 'DELETE': {
-            console.log(req.body)
-            return deletePost(req, res);
+            return deleteHabit(req, res);
         }
     }
 }

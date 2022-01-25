@@ -41,7 +41,7 @@ export default function Form({ email }: FormProps) {
       .required("Title is required"),
       length: Yup.number()
       .max(365, "Streaks cap at 1 year")
-      .required("Length is required"),
+      .required("Length is required and must be a number"),
       reason: Yup.string()
       .min(3, "Must have 3 characters")
       .max(30, "Must be 20 characters or less")

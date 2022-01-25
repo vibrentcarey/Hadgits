@@ -1,23 +1,18 @@
-import { resetWarningCache } from 'prop-types';
-
 const { connectToDatabase } = require('../lib/mongodb');
-const ObjectId = require('mongodb').ObjectId;
 
-export async function getPosts(req, res) {
+export async function getHabits(req, res) {
   const user = req.query.user && req.query.user
-
   try {
     // connect to the database
-    let { db } = await connectToDatabase();
-    // fetch the posts
-    let posts = await db
-      .collection('posts')
+    const { db } = await connectToDatabase();
+    // fetch the habits
+    const habits = await db
+      .collection('habits')
       .find({ user: user })
       .toArray();
-    console.log(posts);
-    // return the posts
+    // return the habits
     return res.json({
-      message: JSON.parse(JSON.stringify(posts)),
+      message: JSON.parse(JSON.stringify(habits)),
       success: true,
     });
   } catch (error) {
@@ -29,15 +24,15 @@ export async function getPosts(req, res) {
   }
 }
 
-export async function addPost(req, res) {
+export async function addHabit(req, res) {
   try {
     // connect to the database
-    let { db } = await connectToDatabase();
+    const { db } = await connectToDatabase();
     // add the post
-    await db.collection('posts').insertOne(req.body);
+    await db.collection('habits').insertOne(req.body);
     // return a message
     return res.json({
-      message: 'Post added successfully',
+      message: 'Habit added successfully',
       success: true,
     });
   } catch (error) {
@@ -49,25 +44,22 @@ export async function addPost(req, res) {
   }
 }
 
-export async function deletePost(req, res) {
+export async function deleteHabit(req, res) {
   const { title, user } = req.body;
   try {
     // Connecting to the database
-    let { db } = await connectToDatabase();
-
-    // Deleting the post
-    await db.collection('posts').deleteOne({
+    const { db } = await connectToDatabase();
+    // deleting the habit
+    await db.collection('habits').deleteOne({
       user,
       title
     });
-
     // returning a message
     return res.json({
-      message: 'Post deleted successfully',
+      message: 'Habit deleted successfully',
       success: true,
     });
   } catch (error) {
-
     // returning an error
     return res.json({
       message: new Error(error).message,
@@ -76,41 +68,36 @@ export async function deletePost(req, res) {
   }
 }
 
-export async function updatePost(req, res) {
+export async function updateHabit(req, res) {
   const { title, user, reason, resource } = req.body;
   try {
     // connect to the database
-    let { db } = await connectToDatabase();
-
-    console.log(req.body);
+    const { db } = await connectToDatabase();
     // update the published status of the post
-    await db.collection('posts').updateOne(
+    await db.collection('habits').updateOne(
       { title },
       { $set: { length: 0 } }
     );
-
+    // add a new reason to the reasons array
     if (req.body.reason) {
-      await db.collection('posts').updateOne(
+      await db.collection('habits').updateOne(
         { title, user },
         { $push: { reason } }
       )
     }
-
+    // add a new resource to the resource array
     if (req.body.resource) {
-      console.log('resource' , resource);
-      await db.collection('posts').updateOne(
+      await db.collection('habits').updateOne(
         { title, user },
-        { $push: { resources: {title: resource.title, resourceLink: resource.resourceLink }} }
+        { $push: { resources: { title: resource.title, resourceLink: resource.resourceLink } } }
       )
     }
-
     // return a message
     return res.json({
-      message: 'Post updated successfully',
+      message: 'Habit updated successfully',
       success: true,
     });
   } catch (error) {
-
     // return an error
     return res.json({
       message: new Error(error).message,
