@@ -13,6 +13,7 @@ interface BadgeBarProps {
 }
 
 export default function BadgeBar(color: BadgeBarProps) {
+  
   return (
     <div className="flex flex-wrap">
       {color.color.shades.map((shade: { day: number; shade: string }) => {

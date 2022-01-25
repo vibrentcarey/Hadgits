@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 type BadgeProps = {
   style: string;
@@ -20,10 +19,11 @@ export default function Badge({ style, day } : BadgeProps) {
     day === 311 ||
     day === 360 ||
     day === 365;
+    console.log(style)
 
   return (
     <div
-      className={`xs: h-10 w-10 sm: h-18 w-18 p-6 border-dashed m-1 border-2 ${style} rounded-full shadow-xl flex justify-center items-center ${
+      className={`${style} xs: h-10 w-10 sm: h-18 w-18 p-6 border-dashed m-1 border-2 rounded-full shadow-xl flex justify-center items-center ${
         animate && "animate-bounce"
       }`}
     >

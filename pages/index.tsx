@@ -6,7 +6,6 @@ import { getSession } from "next-auth/client";
 import { useRouter } from "next/router";
 import { Session } from "../types/Session";
 import { Context } from "vm";
-import { UserHabit } from "../types/Habit";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 
