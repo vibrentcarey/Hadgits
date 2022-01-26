@@ -17,7 +17,6 @@ export default NextAuth({
         const { db } = await connectToDatabase()
         const users = db.collection('users');
         const user = await users.findOne({ email: credentials.email })
-        console.log(user);
 
         if (!user) {
           throw new Error('No user found!')

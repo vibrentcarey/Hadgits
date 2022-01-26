@@ -7,7 +7,6 @@ const AuthContext = createContext({
 
 export function AuthContextProvider({ children }) {
   const [session, loading] = useSession()
-  console.log(session);
   const [user, setUser] = useState(session)
 
   useEffect(() => {

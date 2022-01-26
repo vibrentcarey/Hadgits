@@ -15,6 +15,7 @@ import H4 from "@material-tailwind/react/Heading4";
 import Input from '../components/Input'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
 import Card from '@material-tailwind/react/Card';
+import Head from 'next/head';
 
 export default function Auth({ session }) {
   const router = useRouter();
@@ -37,6 +38,9 @@ export default function Auth({ session }) {
 
   return (
     <PageWrapper>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
       <div className='flex flex-col items-center px-8'>
         {browser && <AnimationOnScroll animateIn="animate__jackInTheBox">
           <Intro />
@@ -45,7 +49,7 @@ export default function Auth({ session }) {
         <Quote style={{ margin: '6rem 1rem', textAlign: 'center', fontWeight: 'bold', maxWidth: '600px' }} color="deepPurple" footer="John Dryden" cite=''>
           We first make our habits, and then our habits make us.
         </Quote>
-        <hr className='border border-primaryPurple w-full max-w-lg'/>
+        <hr className='border border-primaryPurple w-full max-w-lg' />
         <section className='sm:grid grid-cols-2 max-w-xl'>
           {/* INTRO TEXT */}
           {browser && <AnimationOnScroll animateIn="animate__fadeIn" animateOut='animate__fadeOut'>
@@ -57,14 +61,14 @@ export default function Auth({ session }) {
             </AnimationOnScroll>}
           </div>
         </section>
-        <hr className='border border-primaryPurple w-full max-w-lg my-4'/>
+        <hr className='border border-primaryPurple w-full max-w-lg my-4' />
 
         <section className='sm:grid grid-cols-2 gap-10'>
           {/* INPUT */}
           {browser && <AnimationOnScroll animateIn="animate__rotateInDownLeft" animateOut='animate__rotateOutDownRight'>
-              <ImageTitle title='Add Habits' >
-                <Input color='purple' id="habit" placeholder="Build your streaks.." read >Add A Habit</Input>
-              </ImageTitle>
+            <ImageTitle title='Add Habits' >
+              <Input color='purple' id="habit" placeholder="Build your streaks.." read >Add A Habit</Input>
+            </ImageTitle>
           </AnimationOnScroll>}
           {/* BADGES */}
           {browser && <AnimationOnScroll animateIn="animate__flipInX" animateOut='animate__flipOutX'>
@@ -76,7 +80,7 @@ export default function Auth({ session }) {
             </ImageTitle>
           </AnimationOnScroll>}
         </section>
-        <hr className='border border-primaryPurple w-full max-w-lg my-4'/>
+        <hr className='border border-primaryPurple w-full max-w-lg my-4' />
 
         {/* SHAKE */}
         <div className='my-24 w-full max-w-md flex flex-col items-center'>
@@ -86,7 +90,7 @@ export default function Auth({ session }) {
           </AnimationOnScroll>}
           <p className='text-2xl font-bold'>Bad Habits?</p>
         </div>
-        <hr className='border border-primaryPurple w-full max-w-lg my-4'/>
+        <hr className='border border-primaryPurple w-full max-w-lg my-4' />
 
         {/* FORM */}
         {browser && <AnimationOnScroll animateIn="animate__bounceInDown"
