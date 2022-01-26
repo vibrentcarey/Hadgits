@@ -31,11 +31,6 @@ export default function Auth({ session }) {
     }
   }, [session])
 
-  const DynamicIntro = dynamic(
-    () => import('../components/IntroHeader'),
-    { ssr: false }
-  )
-
   return (
     <PageWrapper>
       <Head>
