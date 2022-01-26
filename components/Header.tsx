@@ -40,8 +40,6 @@ export default function Header() {
   }
 
   const router = useRouter()
-  console.log(router);
-  
 
   const closeModal = () => {
     setShowModal(false)

@@ -70,7 +70,6 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       resource: '',
       resourceLink: ''
     }, onSubmit: values => {
-      console.log(values)
       const updatedInfo = {
         title,
         reason: values.reason,
@@ -90,7 +89,6 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
     const shade = color.shades.find(shade => shade.day === highestBadge)
     if (shade) {
       background = shade.shade;
-      console.log(background);
     }
   })
 
@@ -126,8 +124,6 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       handleDelete(title)
     }
     if(confirm === 'Restart'){
-      console.log('restarting');
-      
       handleRestart(title)
     }
   }

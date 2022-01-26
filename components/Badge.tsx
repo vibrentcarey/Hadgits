@@ -19,7 +19,6 @@ export default function Badge({ style, day } : BadgeProps) {
     day === 311 ||
     day === 360 ||
     day === 365;
-    console.log(style)
 
   return (
     <div
