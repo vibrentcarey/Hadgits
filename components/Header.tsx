@@ -79,7 +79,7 @@ export default function Header() {
           <NavbarCollapse open={openMenu}>
             <Nav>
               <div
-                className="bg-purple-500 text-white rounded-sm my-2 max-w-sm p-1"
+                className="bg-purple-400 text-white rounded-md my-2 max-w-sm p-1"
               >
                 <Link href="/" passHref>
                   <div className="flex items-center hover:cursor-pointer">
@@ -89,7 +89,7 @@ export default function Header() {
                 </Link>
               </div>
               <div
-                className="bg-purple-500 text-white rounded-sm my-2 max-w-sm p-1"
+                className="bg-purple-400 text-white rounded-md my-2 max-w-sm p-1"
               >
                 <Link href="/create" passHref>
                   <div className="flex items-center hover:cursor-pointer">
@@ -99,7 +99,7 @@ export default function Header() {
                 </Link>
               </div>
               <div
-                className="bg-purple-500 text-white rounded-sm my-2 p-1 max-w-sm"
+                className="bg-purple-400 text-white rounded-md my-2 p-1 max-w-sm"
               >
                 <Link href="/badges" passHref>
                   <div className="flex items-center hover:cursor-pointer">
@@ -109,7 +109,7 @@ export default function Header() {
                 </Link>
               </div>
               <div
-                className="bg-purple-500 text-white rounded-sm my-2 max-w-sm p-1"
+                className="bg-purple-400 text-white rounded-md my-2 max-w-sm p-1"
                 onClick={confirmLogout}
               >
                 <div className="flex items-center hover:cursor-pointer">
