@@ -72,7 +72,7 @@ export default function Home({ session }: Session) {
             </Card>
           </div>
         )}
-        <div className="sm:grid grid-cols-2">
+        <div className="md:grid grid-cols-2">
           {!waiting &&
             habits &&
             habits.map((habit) => {

@@ -74,6 +74,7 @@ export default function Form({ email }: FormProps) {
     <form
       className="flex flex-col"
       onSubmit={formik.handleSubmit}
+      autoComplete='off'
     >
       <section className="my-2">
         <Input

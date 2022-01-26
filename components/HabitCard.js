@@ -163,7 +163,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       {/* Reason Input Dropdown */}
 
       {showReasonInput &&
-        <form className='mt-4' onSubmit={formik.handleSubmit}>
+        <form className='mt-4' onSubmit={formik.handleSubmit} autoComplete='off'>
 
           {browser && <AnimationOnScroll animateIn="animate__zoomIn"
           >
@@ -191,7 +191,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       {/* Resource Input Dropdown */}
       {showResourcesInput &&
 
-        <form className='mt-2' onSubmit={formik.handleSubmit}>
+        <form className='mt-2' onSubmit={formik.handleSubmit} autoComplete='off'>
           {browser && <AnimationOnScroll animateIn="animate__zoomIn"
           >
             <Input size='sm' label='resourceLink' value={formik.values.resourceLink} onChange={formik.handleChange} id='resourceLink' placeholder='Enter a new resource link...' >New Resource Link</Input>

@@ -55,7 +55,7 @@ export default function AuthForm() {
 
   return (
     <Card className='p-8 max-w-md w-full mt-2 mb-10 '>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} autoComplete='off'>
       <h2 className='text-purple-600 font-bold text-3xl text-center capitalize'>{loginMode ? 'Login' : 'Sign Up'}</h2>
         <Input
           value={formik.values.email}
