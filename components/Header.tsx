@@ -80,7 +80,6 @@ export default function Header() {
             <Nav>
               <div
                 className="bg-purple-500 text-white rounded-sm my-2 max-w-sm p-1"
-                onClick={confirmLogout}
               >
                 <Link href="/" passHref>
                   <div className="flex items-center hover:cursor-pointer">
@@ -91,7 +90,6 @@ export default function Header() {
               </div>
               <div
                 className="bg-purple-500 text-white rounded-sm my-2 max-w-sm p-1"
-                onClick={confirmLogout}
               >
                 <Link href="/create" passHref>
                   <div className="flex items-center hover:cursor-pointer">
@@ -102,7 +100,6 @@ export default function Header() {
               </div>
               <div
                 className="bg-purple-500 text-white rounded-sm my-2 p-1 max-w-sm"
-                onClick={confirmLogout}
               >
                 <Link href="/badges" passHref>
                   <div className="flex items-center hover:cursor-pointer">
