@@ -11,7 +11,9 @@ module.exports = {
         primaryRed: '#DA0037',
         primaryBlack: '#171717',
         backgroundPink: '##F1E8F3',
-        primaryPurple: '#673AB7'
+        primaryPurple: '#673AB7',
+        primaryGreen: '#59bb00'
+
       },
     },
     screens: {

@@ -5,5 +5,5 @@ interface WrapperProps {
 }
 
 export default function PageWrapper({ children }: WrapperProps) {
-  return <div className="h-full w-full md:px-24 sm:px-20">{children}</div>;
+  return <div className="h-full w-full md:px-8 sm:px-6">{children}</div>;
 }

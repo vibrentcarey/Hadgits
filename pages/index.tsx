@@ -29,10 +29,9 @@ export default function Home({ session }: Session) {
     }
     setWaiting(false);
   };
-
   useEffect(() => {
     if (session) {
-    setBrowser(true);
+      setBrowser(true);
 
       setWaiting(true);
       loadData(session.user.email);
@@ -55,42 +54,43 @@ export default function Home({ session }: Session) {
             <PropagateLoader color="#6B21A8" />
           </div>
         )}
-        <div className="flex flex-wrap justify-center items-start h-full pb-6">
-          <div className="flex flex-col items-center justify-center mt-20">
-            {!waiting && habits.length === 0 && (
-              <div>
-                <Card className="flex flex-col items-center">
-                  <p className="text-primaryPurple text-xl font-bold">
-                    Can't Find Anything Here 🧐 ...{" "}
-                  </p>{" "}
-                  {browser && (
-                    <AnimationOnScroll animateIn="animate__tada">
-                      <Link href="/create">
-                        <p className="text-3xl text-purple-500 font-bold mt-4 hover:animate-pulse cursor-pointer ">
-                          Add A Habit
-                        </p>
-                      </Link>
-                    </AnimationOnScroll>
-                  )}
-                </Card>
-              </div>
-            )}
+        {!waiting && habits.length === 0 && (
+          <div className="flex justify-center">
+            <Card className="flex flex-col items-center mt-16 max-w-sm">
+              <p className="text-primaryPurple text-xl font-bold">
+                Can't Find Anything Here 🧐 ...
+              </p>
+              {browser && (
+                <AnimationOnScroll animateIn="animate__tada">
+                  <Link href="/create">
+                    <p className="text-3xl text-purple-500 font-bold mt-4 hover:animate-pulse cursor-pointer ">
+                      Add A Habit
+                    </p>
+                  </Link>
+                </AnimationOnScroll>
+              )}
+            </Card>
           </div>
+        )}
+        <div className="sm:grid grid-cols-2">
           {!waiting &&
             habits &&
             habits.map((habit) => {
               return (
-                <AnimationOnScroll animateIn="animate__zoomIn" className="w-11/12 mx-2">
-                <HabitCard
-                  key={habit._id}
-                  title={habit.title}
-                  reason={habit.reason}
-                  resources={habit.resources}
-                  length={habit.length}
-                  refresh={loadData}
-                  user={session.user.email}
-                  longest={habit.longest}
-                />
+                <AnimationOnScroll
+                  animateIn="animate__zoomIn"
+                  className="w-full mx-2 flex justify-center"
+                >
+                  <HabitCard
+                    key={habit._id}
+                    title={habit.title}
+                    reason={habit.reason}
+                    resources={habit.resources}
+                    length={habit.length}
+                    refresh={loadData}
+                    user={session.user.email}
+                    longest={habit.longest}
+                  />
                 </AnimationOnScroll>
               );
             })}

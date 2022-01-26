@@ -8,7 +8,7 @@ import Button from "@material-tailwind/react/Button";
 
 export default function ConfirmModal({ title, message, showModal, closeModal, confirm, submit }) {
   return (
-    <Modal size="sm" active={showModal} toggler={closeModal}>
+    <Modal size="sm" active={showModal} toggler={closeModal} className='z-10'>
       <ModalHeader toggler={closeModal}>
         {title}
       </ModalHeader>

@@ -40,7 +40,7 @@ export default function Create({ session }: Session) {
           Start A New Habit
         </h1>
         {browser && (
-          <AnimationOnScroll className="w-full" animateIn="animate__fadeInDownBig"
+          <AnimationOnScroll className="w-full flex justify-center" animateIn="animate__fadeInDownBig"
           animateOut="animate__fadeOut">
             <Form email={email} />
           </AnimationOnScroll>
