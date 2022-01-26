@@ -45,7 +45,7 @@ export default function Auth({ session }) {
           We first make our habits, and then our habits make us.
         </Quote>
         <hr className='border border-primaryPurple w-full max-w-lg' />
-        <section className='sm:grid grid-cols-2 max-w-xl'>
+        <section className='sm:grid grid-cols-2 max-w-xl mt-10'>
           {/* INTRO TEXT */}
           {browser && <AnimationOnScroll animateIn="animate__fadeIn" animateOut='animate__fadeOut'>
             <IntroText />
