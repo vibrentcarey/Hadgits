@@ -11,6 +11,7 @@ export default function IntroText() {
            <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Dynamic Habit Tracking 🧮</li>
            <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Integrated Streak Counter 📈</li>
            <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Reason & Resource Storage 🗃</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Personal Motivation ✨</li>
            <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Badges Reward System🎖</li>
         </ul>
      </article>
