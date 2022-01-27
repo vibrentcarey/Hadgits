@@ -37,7 +37,7 @@ export default function Create({ session }: Session) {
     <PageWrapper>
       <div className="flex flex-col mt-10 sm:mt-20 items-center px-8">
         <h1 className="underline tracking-wider decoration-purple-700 text-primaryPurple text-center font-bold text-4xl mb-8">
-          Start A New Habit
+          Create Habit
         </h1>
         {browser && (
           <AnimationOnScroll className="w-full flex justify-center" animateIn="animate__fadeInDownBig"
