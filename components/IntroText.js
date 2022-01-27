@@ -10,8 +10,8 @@ export default function IntroText() {
         <ul className='flex flex-col h-48 justify-evenly'>
            <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Dynamic Habit Tracking 🧮</li>
            <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Integrated Streak Counter 📈</li>
-           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Reason and Resource Storage 🗃</li>
-           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Badge Based Reward System🎖</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Reason & Resource Storage 🗃</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Badges Reward System🎖</li>
         </ul>
      </article>
   )
