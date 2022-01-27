@@ -4,7 +4,6 @@ import PageWrapper from '../components/PageWrapper';
 import { getSession } from "next-auth/client"
 import { useRouter } from 'next/router';
 import Intro from '../components/IntroHeader';
-import dynamic from 'next/dynamic'
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import "animate.css/animate.min.css";
 import Quote from "@material-tailwind/react/Quote"
@@ -14,8 +13,9 @@ import Badge from '../components/Badge'
 import H4 from "@material-tailwind/react/Heading4";
 import Input from '../components/Input'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
-import Card from '@material-tailwind/react/Card';
 import Head from 'next/head';
+import { BiBadgeCheck } from "react-icons/bi";
+
 
 export default function Auth({ session }) {
   const router = useRouter();
@@ -44,23 +44,23 @@ export default function Auth({ session }) {
         <Quote style={{ margin: '6rem 1rem', textAlign: 'center', fontWeight: 'bold', maxWidth: '600px' }} color="deepPurple" footer="John Dryden" cite=''>
           We first make our habits, and then our habits make us.
         </Quote>
-        <hr className='border border-primaryPurple w-full max-w-lg' />
+        <hr className='border border-primaryPurple w-full max-w-lg mt-8' />
         <section className='sm:grid grid-cols-2 max-w-xl mt-10'>
           {/* INTRO TEXT */}
-          {browser && <AnimationOnScroll animateIn="animate__fadeIn" animateOut='animate__fadeOut'>
+          {browser && <AnimationOnScroll animateIn="animate__zoomIn" animateOut='animate__zoomOut'>
             <IntroText />
           </AnimationOnScroll>}
           <div className='flex items-center justify-center mt-10'>
             {browser && <AnimationOnScroll animateIn="animate__rotateIn" animateOut='animate__rotateOut'>
-              <MdOutlineCatchingPokemon className='text-primaryPurple text-9xl w-full' />
+              <BiBadgeCheck className='text-primaryPurple text-9xl w-full my-8' />
             </AnimationOnScroll>}
           </div>
         </section>
-        <hr className='border border-primaryPurple w-full max-w-lg my-4' />
+        <hr className='border border-primaryPurple w-full max-w-lg mt-20' />
 
         <section className='sm:grid grid-cols-2 gap-10'>
           {/* INPUT */}
-          {browser && <AnimationOnScroll animateIn="animate__rotateInDownLeft" animateOut='animate__rotateOutDownRight'>
+          {browser && <AnimationOnScroll animateIn="animate__rotateInDownLeft" animateOut='animate__fadeOut'>
             <ImageTitle title='Add Habits' >
               <Input color='purple' id="habit" placeholder="Build your streaks.." read >Add A Habit</Input>
             </ImageTitle>

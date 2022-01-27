@@ -82,8 +82,8 @@ export default function AuthForm() {
         </Input>
         <br/>
         <Button color='purple'>{loginMode ? 'Login' : 'Sign Up'}</Button>
-        {loginMode && <><h3>New Here? <span className='text-purple-500 font-bold' onClick={() => setLoginMode(false)}>Sign Up</span></h3></>}
-        {!loginMode && <><h3>Returning? <span className='text-purple-500 font-bold' onClick={() => setLoginMode(true)}>Login</span></h3></>}
+        {loginMode && <><h3>New Here? <span className='text-purple-500 font-bold hover:cursor-pointer' onClick={() => setLoginMode(false)}>Sign Up</span></h3></>}
+        {!loginMode && <><h3>Returning? <span className='text-purple-500 font-bold hover:cursor-pointer' onClick={() => setLoginMode(true)}>Login</span></h3></>}
 
       </form>
     </Card>

@@ -167,7 +167,6 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
 
           {browser && <AnimationOnScroll animateIn="animate__zoomIn"
           >
-
             <Input size='sm' label='reason' value={formik.values.reason} onChange={formik.handleChange} id='reason' placeholder='Enter a new reason...' >New Reason</Input>
             <LocalButton size='sm' color='purple'>Add Reason</LocalButton>
           </AnimationOnScroll>}
