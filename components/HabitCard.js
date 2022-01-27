@@ -141,7 +141,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <Card className='my-4 mx-2 px-8 py-4 max-w-sm w-full '>
+    <Card className='my-8 mt-12 mx-2 px-8 py-4 max-w-sm w-full '>
       <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit} />
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={confirmDelete
@@ -158,7 +158,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse float-right cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
 
       <ul className='flex flex-wrap'>
-        {reason.map(reason => <li key={reason} className='list-none font-bold text-primaryGreen capitalize mx-2'> - {reason}</li>)}
+        {reason.map(reason => <li key={reason} className='list-none font-bold text-primaryGreen text-sm capitalize mx-2'> - {reason}</li>)}
       </ul>
       {/* Reason Input Dropdown */}
 
@@ -184,7 +184,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       <div className='flex flex-wrap'>
         {
           resources.map(resource => {
-            return <a key={resource.title} href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-green-600 text-primaryGreen capitalize mx-2'>{resource.title}</a>
+            return <a key={resource.title} href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-green-600 text-sm text-primaryGreen capitalize mx-2 my-1'>{resource.title}</a>
           })
         }</div>
       {/* Resource Input Dropdown */}

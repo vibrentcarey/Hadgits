@@ -5,13 +5,13 @@ import {SiPokemon} from 'react-icons/si';
 
 export default function IntroText() {
   return (
-     <article className='mt-12 max-w-md'>
+     <article className='flex flex-col items-center mt-12 max-w-md'>
         <H4 color="deepPurple">Why Hadgits?</H4>
         <ul className='flex flex-col h-48 justify-evenly'>
-           <li className='list-disc text-lg sm:text-xl text-primaryPurple'>Dynamic Habit Tracking 🧮</li>
-           <li className='list-disc text-lg sm:text-xl text-primaryPurple'>Integrated Streak Counter 📈</li>
-           <li className='list-disc text-lg sm:text-xl text-primaryPurple'>Reason and Resource Storage 🗃</li>
-           <li className='list-disc text-lg sm:text-xl text-primaryPurple'>Badge Based Reward System🎖</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Dynamic Habit Tracking 🧮</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Integrated Streak Counter 📈</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Reason and Resource Storage 🗃</li>
+           <li className='list-disc text-lg sm:text-xl text-primaryPurple ml-4'>Badge Based Reward System🎖</li>
         </ul>
      </article>
   )

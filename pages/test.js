@@ -16,18 +16,20 @@ export default function Navbari() {
   const [openNavbar, setOpenNavbar] = useState(false);
   return (
     <div>
-      <h1 className="text-center mt-20 text-5xl font-bold text-primaryPurple underline">CONTACT / LIVE LINK</h1>
+      <h1 className="text-center mt-20 text-5xl font-bold text-primaryPurple underline">DEMO</h1>
       <div className="grid grid-cols-2 gap-8 mt-8">
+      <img src='/iphone_mockup.png' className="h-96 ml-20"/> 
+
       <div className="flex flex-col items-center m-2">
-      <FaLinkedin className="text-6xl m-2 text-primaryPurple"/>
-      <img src='/linkedin_qr.png' className="rounded-sm shadow-md"/>
-      </div>
+      {/* <FaLinkedin className="text-6xl m-2 text-primaryPurple"/> */}
       <div className="flex flex-col items-center m-2">
       <BiBadgeCheck className="text-6xl m-2 text-primaryPurple"/>
       <img src='/hadgits_qr.png' className="rounded-sm shadow-md"/>
       </div>
-      {/* <img src='/mac_mockup.png' className="h-96 "/>
-      <img src='/iphone_mockup.png' className="h-96 ml-20"/> */}
+      </div>
+      {/* <img src='/linkedin_qr.png' className="rounded-sm shadow-md"/> */}
+   
+      {/* <img src='/mac_mockup.png' className="h-96 "/> */}
         {/* <div className="flex flex-col items-center justify-center">
           <img src='/react_icon_png.png' className="h-20 m-10 mb-2" />
           <h2 className="text-primaryPurple font-bold">React.js</h2>
