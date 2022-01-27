@@ -141,7 +141,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
   }
 
   return (
-    <Card className='my-8 mt-12 mx-2 px-8 py-4 max-w-sm w-full '>
+    <Card className='mb-4 mt-10 mx-2 px-8 py-8 max-w-sm w-full'>
       <Modal title={modalTitle} message={modalMessage} showModal={showModal} closeModal={closeModal} confirm={confirm} submit={submit} />
       {/* Delete Button */}
       <FaTrashAlt className='float-right text-purple-600 text-2xl ml-4 hover:animate-pulse cursor-pointer' onClick={confirmDelete
@@ -151,8 +151,8 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
 
       {/* Reasons */}
 
-      <h2 className='text-purple-600 font-bold text-xl mt-5'>Reasons</h2>
-      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+      <h2 className='text-purple-600 font-bold text-xl mt-2'>Reasons</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-1' />
 
       {/* Reasons Edit Button */}
       <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse float-right cursor-pointer' onClick={() => setShowReasonInput(!showReasonInput)} />
@@ -175,8 +175,8 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
 
       {/* Resources */}
 
-      <h2 className='text-purple-600 font-bold text-xl mt-5'>Resources</h2>
-      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+      <h2 className='text-purple-600 font-bold text-xl mt-2'>Resources</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-1' />
 
       {/* Resources Edit Button */}
       <FaEdit className='text-purple-500 text-xl mx-2 hover:animate-pulse cursor-pointer float-right' onClick={() => setShowResourcesInput(!showResourcesInput)} />
@@ -184,7 +184,7 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
       <div className='flex flex-wrap'>
         {
           resources.map(resource => {
-            return <a key={resource.title} href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-green-600 text-sm text-primaryGreen capitalize mx-2 my-1'>{resource.title}</a>
+            return <a key={resource.title} href={resource.resourceLink} target='_blank' className='hover:animate-pulse font-bold underline decoration-green-600 text-sm text-primaryGreen capitalize mx-2'>{resource.title}</a>
           })
         }</div>
       {/* Resource Input Dropdown */}
@@ -201,15 +201,15 @@ export default function HabitCard({ title, reason, resources, length, refresh, u
         </form>}
 
       {/* Current Streak */}
-      <h2 className='text-purple-600 font-bold text-xl mt-5'>Current Streak</h2>
-      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+      <h2 className='text-purple-600 font-bold text-xl mt-2'>Current Streak</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-1' />
 
       {/* Restart Button*/}
       <RiRestartLine className='float-right text-purple-500 text-3xl mx-2 hover:animate-spin cursor-pointer' onClick={confirmRestart} />
       <p className='text-primaryGreen font-bold text-xl'>{length}</p>
       {/* Badge */}
-      <h2 className='text-purple-600 font-bold text-xl mt-5'>Highest Badge Earned</h2>
-      <hr className='border-b-3 border-purple-600 mt-1 mb-4' />
+      <h2 className='text-purple-600 font-bold text-xl mt-2'>Highest Badge Earned</h2>
+      <hr className='border-b-3 border-purple-600 mt-1 mb-7' />
       <Badge day={highestBadge > 0 && highestBadge} style={background && background} />
     </Card>
 

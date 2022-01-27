@@ -72,14 +72,14 @@ export default function Home({ session }: Session) {
             </Card>
           </div>
         )}
-        <div className="md:grid grid-cols-2">
+        <div className="content-center md:grid grid-cols-2">
           {!waiting &&
             habits &&
             habits.map((habit) => {
               return (
                 <AnimationOnScroll
                   animateIn="animate__zoomIn"
-                  className="w-full mx-2 flex justify-center"
+                  className="w-full flex justify-center items-center"
                 >
                   <HabitCard
                     key={habit._id}
