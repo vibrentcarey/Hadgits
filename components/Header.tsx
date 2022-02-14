@@ -66,6 +66,7 @@ export default function Header() {
           <div className="flex items-center mb-2">
             <BiBadgeCheck className="text-white text-xl m-1" />
             <h1 className="text-white text-3xl font-bold ">Hadgits</h1>
+            <p>3rd party package broke navbar, will be fixed soon 🚧</p>
           </div>
           {session && (
             <NavbarToggler
